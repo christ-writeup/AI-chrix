@@ -19,5 +19,5 @@ COPY templates/ templates/
 # Expose port
 EXPOSE 7860
 
-# Run with Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:7860", "app:app"]
+# Run with Gunicorn using dynamic PORT for Railway/Heroku/Render
+CMD gunicorn --bind 0.0.0.0:${PORT:-7860} app:app
