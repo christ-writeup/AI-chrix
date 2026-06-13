@@ -1,3 +1,13 @@
+---
+title: Chrix Persona
+emoji: 🚀
+colorFrom: blue
+colorTo: green
+sdk: docker
+pinned: false
+app_port: 7860
+---
+
 # Chrix Tech — Persona AI v4
 
 A RAG-powered personal AI chatbot that speaks as Christian Agyapong (Chrix Tech).
