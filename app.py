@@ -4,8 +4,7 @@
 # ============================================================
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_chroma import Chroma
+from langchain_community.retrievers import BM25Retriever
 from langchain_core.documents import Document
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_groq import ChatGroq
@@ -106,16 +105,8 @@ def build_documents_from_bio(bio_text):
 
 docs = build_documents_from_bio(personal_bio)
 
-embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2",
-    model_kwargs={"device": "cpu"}
-)
-vectorstore = Chroma.from_documents(
-    documents=docs,
-    embedding=embeddings,
-    persist_directory="./chrix_db_v4"
-)
-retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
+retriever = BM25Retriever.from_documents(docs)
+retriever.k = 5
 
 # ─── LLM ─────────────────────────────────────────────────────
 llm = ChatGroq(
