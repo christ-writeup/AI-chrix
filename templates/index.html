@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrix Tech | Personal AI</title>
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Background decorative elements -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div class="chat-wrapper glass-panel">
+            <header class="chat-header">
+                <div class="profile-info">
+                    <div class="avatar-container">
+                        <img src="{{ url_for('static', filename='avatar.jpg') }}" alt="Chrix Tech Avatar" class="avatar">
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div class="user-details">
+                        <h1 class="user-name">Chrix Tech</h1>
+                        <p class="user-title">Computer Science & AI/ML Specialist</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button id="clear-btn" class="icon-button" title="Clear Chat">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+                    </button>
+                </div>
+            </header>
+
+            <div class="chat-messages" id="chat-messages">
+                <div class="message ai-message">
+                    <div class="message-content">Hey! I'm Christian Agyapong, but most people know me as Chrix Tech. I study Computer Science at the University of Ghana, majoring in AI and Machine Learning. Feel free to ask me anything about my background, projects, or goals!</div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="suggestions" id="suggestions">
+                    <button class="suggestion-chip">Where did you grow up?</button>
+                    <button class="suggestion-chip">Tell me about your AI experience</button>
+                    <button class="suggestion-chip">What are your goals?</button>
+                </div>
+                
+                <form id="chat-form" class="input-form">
+                    <div class="input-wrapper glass-input">
+                        <input type="text" id="message-input" placeholder="Ask Chrix anything..." autocomplete="off">
+                        <button type="submit" id="send-btn" class="send-button" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

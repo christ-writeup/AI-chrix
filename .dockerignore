@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.*
+!.env.example
+venv/
+.venv/
+chrix_db_v4/
+notebooks/
+.git/
+.gitignore
+*.ipynb
