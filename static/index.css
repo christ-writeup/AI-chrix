@@ -6,6 +6,7 @@
     --bg-glass:         rgba(18, 22, 36, 0.72);
     --bg-glass-hover:   rgba(28, 34, 54, 0.80);
     --bg-input:         rgba(6, 8, 18, 0.60);
+    --bg-input-alt:     rgba(12, 16, 30, 0.72); /* slightly lighter/different input bar */
     --border-glass:     rgba(255, 255, 255, 0.07);
     --border-focus:     rgba(88, 166, 255, 0.45);
 
@@ -415,8 +416,9 @@ html, body {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: var(--bg-input);
-    border: 1px solid var(--border-glass);
+    /* Use the alternate input background so the text bar reads slightly different */
+    background: var(--bg-input-alt);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--radius-input);
     padding: 6px 6px 6px 18px;
     transition: border-color var(--transition), box-shadow var(--transition);

@@ -436,6 +436,20 @@ IMPORTANT: Only include verification links or social/portfolio links if the FOCU
 
     reply = clean_reply(reply)
 
+    # Remove hometown/origin mentions (Edwinase) unless the user explicitly asked about origin
+    try:
+        if intent != "origin":
+            # Remove full sentences that mention Edwinase or variations about growing up there
+            reply = re.sub(r"(?i)(?:[^.?!]*\b(edwinase)\b[^.?!]*[.?!])", "", reply).strip()
+            # Remove short phrases like 'Originally from Edwinase' or 'from Edwinase'
+            reply = re.sub(r"(?i)\b(originally from edwinase|from edwinase|edwinase,?)\b", "", reply).strip()
+            # Clean extra whitespace/punctuation left behind
+            reply = re.sub(r"[ ]{2,}", " ", reply).strip()
+            reply = re.sub(r"^[,;:\s]+", "", reply).strip()
+    except Exception:
+        # If anything goes wrong with post-processing, keep the original cleaned reply
+        pass
+
     if not reply:
         reply = "That is a fair question. Please ask me again and I will give you a clear answer."
 
