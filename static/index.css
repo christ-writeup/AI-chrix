@@ -55,6 +55,8 @@ html, body {
     height: 100%;
     overflow: hidden;
     background: var(--bg-dark);
+    color: var(--text-primary);   /* #edf0ff — bright near-white */
+    font-family: 'Inter', system-ui, sans-serif;
 }
 
 /* ============================================================
@@ -313,6 +315,7 @@ html, body {
     background: var(--ai-bubble);
     border: 1px solid var(--border-glass);
     border-bottom-left-radius: 4px;
+    color: #ffffff;   /* always bright white, no inheritance issues */
 }
 
 .user-message .message-content {
