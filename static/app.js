@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.innerHTML = `
             <div class="message ai-message">
                 <div class="message-content">Hey! I'm Christian Agyapong, but most people know me as Chrix Tech. I study Computer Science at the University of Ghana, majoring in AI and Machine Learning. Feel free to ask me anything about my background, projects, or goals!</div>
+                <span class="message-time" aria-hidden="true">Just now</span>
             </div>
         `;
     });
@@ -120,15 +121,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function getTimeLabel() {
+        return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
     function addMessageToUI(sender, text) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${sender}-message`;
-        
+
         const contentDiv = document.createElement('div');
         contentDiv.className = 'message-content';
         contentDiv.innerHTML = urlify(text);
-        
+
+        const timeSpan = document.createElement('span');
+        timeSpan.className = 'message-time';
+        timeSpan.setAttribute('aria-hidden', 'true');
+        timeSpan.textContent = getTimeLabel();
+
         messageDiv.appendChild(contentDiv);
+        messageDiv.appendChild(timeSpan);
         chatMessages.appendChild(messageDiv);
         scrollToBottom();
     }
@@ -163,43 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Adjust UI when virtual keyboard opens (mobile)
-    function adjustForKeyboard() {
-        const chatInputArea = document.querySelector('.chat-input-area');
-        if (!chatInputArea) return;
-
-        // Use VisualViewport API when available to compute keyboard height
-        if (window.visualViewport) {
-            const vv = window.visualViewport;
-            const adjust = () => {
-                // Distance the viewport height changed from layout viewport
-                const keyboardHeight = Math.max(0, window.innerHeight - vv.height);
-                // Move input area up and add padding so messages aren't hidden
-                chatInputArea.style.transform = `translateY(-${keyboardHeight}px)`;
-                chatMessages.style.paddingBottom = `${keyboardHeight + 24}px`;
-                // keep latest message visible
-                scrollToBottom();
-            };
-
-            vv.addEventListener('resize', adjust);
-            vv.addEventListener('scroll', adjust);
-            // call once to initialize
-            adjust();
-        } else {
-            // Fallback: on focus add extra padding; remove on blur
-            messageInput.addEventListener('focus', () => {
-                chatMessages.style.paddingBottom = '300px';
-                scrollToBottom();
-            });
-            messageInput.addEventListener('blur', () => {
-                chatMessages.style.paddingBottom = '';
-                chatInputArea.style.transform = '';
-            });
-        }
+    // Scroll to bottom whenever the virtual keyboard resizes the visual viewport
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', () => scrollToBottom());
     }
-
-    // Initialize keyboard adjustments
-    adjustForKeyboard();
 
     function updateSuggestions(newSuggestions) {
         const suggestionsContainer = document.getElementById('suggestions');
