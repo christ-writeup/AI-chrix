@@ -3,10 +3,7 @@ langchain-community
 langchain-text-splitters
 langchain-groq
 langchain-core
-langchain-classic
 rank_bm25
 flask
 gunicorn
 python-dotenv
-sentence-transformers
-chromadb

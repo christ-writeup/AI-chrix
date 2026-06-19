@@ -4,10 +4,7 @@
 # ============================================================
 
 from langchain_community.retrievers import BM25Retriever
-from langchain_classic.retrievers.ensemble import EnsembleRetriever
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.documents import Document
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_groq import ChatGroq
@@ -128,7 +125,6 @@ I adapt, I adjust, and I keep moving forward. Every challenge is simply the cost
 
 # ─── Vector Store ────────────────────────────────────────────
 def build_documents_from_bio(bio_text):
-    # We still need to split the bio for the keyword retriever
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=400, chunk_overlap=60,
         separators=["\n\n", "\n", ". ", " "]
@@ -138,34 +134,8 @@ def build_documents_from_bio(bio_text):
 
 docs = build_documents_from_bio(personal_bio)
 
-# 1. Keyword-based retriever (BM25)
-bm25_retriever = BM25Retriever.from_documents(docs)
-bm25_retriever.k = 4
-
-# 2. Semantic retriever (Chroma)
-PERSIST_DIR = "./chrix_db_v4"
-embedding_function = HuggingFaceEmbeddings(
-    model_name="all-MiniLM-L6-v2",
-    model_kwargs={"device": "cpu"},
-)
-if os.path.isdir(PERSIST_DIR) and os.listdir(PERSIST_DIR):
-    vectorstore = Chroma(
-        persist_directory=PERSIST_DIR,
-        embedding_function=embedding_function,
-    )
-else:
-    vectorstore = Chroma.from_documents(
-        documents=docs,
-        embedding=embedding_function,
-        persist_directory=PERSIST_DIR,
-    )
-chroma_retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 4})
-
-# 3. Ensemble Retriever (Hybrid Search)
-retriever = EnsembleRetriever(
-    retrievers=[bm25_retriever, chroma_retriever],
-    weights=[0.5, 0.5]  # Mix results 50/50
-)
+retriever = BM25Retriever.from_documents(docs)
+retriever.k = 4
 
 # ─── LLM ─────────────────────────────────────────────────────
 llm = ChatGroq(
