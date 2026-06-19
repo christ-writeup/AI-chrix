@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatForm = document.getElementById('chat-form');
     const messageInput = document.getElementById('message-input');
     const sendBtn = document.getElementById('send-btn');
+    const stopBtn = document.getElementById('stop-btn');
     const chatMessages = document.getElementById('chat-messages');
     const clearBtn = document.getElementById('clear-btn');
     const suggestions = document.querySelectorAll('.suggestion-chip');
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // State
     let chatHistory = [];
     let isWaitingForResponse = false;
+    let abortController = new AbortController();
 
     // Enable/disable send button based on input
     messageInput.addEventListener('input', () => {
@@ -49,11 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
         messageInput.value = '';
         sendBtn.disabled = true;
         isWaitingForResponse = true;
+        
+        // Toggle buttons
+        sendBtn.classList.add('hidden');
+        stopBtn.classList.remove('hidden');
 
         // Show typing indicator
         const typingId = showTypingIndicator();
 
         try {
+            // Reset abort controller
+            abortController = new AbortController();
+
             // Send to API
             const response = await fetch('/api/chat', {
                 method: 'POST',
@@ -63,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({
                     message: messageText,
                     history: chatHistory
-                })
+                }),
+                signal: abortController.signal
             });
 
             if (!response.ok) {
@@ -87,15 +97,36 @@ document.addEventListener('DOMContentLoaded', () => {
             updateSuggestions(newSuggestions);
 
         } catch (error) {
-            console.error('Error:', error);
-            removeTypingIndicator(typingId);
-            addMessageToUI('ai', 'Oops, something went wrong connecting to the server. Please try again.');
+            if (error.name === 'AbortError') {
+                console.log('Fetch aborted by user.');
+                removeTypingIndicator(typingId);
+                addMessageToUI('ai', 'Generation stopped.');
+            } else {
+                console.error('Error:', error);
+                removeTypingIndicator(typingId);
+                addMessageToUI('ai', 'Oops, something went wrong connecting to the server. Please try again.');
+            }
         } finally {
             isWaitingForResponse = false;
+            
+            // Toggle buttons back
+            stopBtn.classList.add('hidden');
+            sendBtn.classList.remove('hidden');
+
+            // Re-enable send button if there's text
+            sendBtn.disabled = messageInput.value.trim() === '';
+
             // Focus input if not on mobile
             if (window.innerWidth > 768) {
                 messageInput.focus();
             }
+        }
+    });
+
+    // Stop generation
+    stopBtn.addEventListener('click', () => {
+        if (isWaitingForResponse) {
+            abortController.abort();
         }
     });
 
@@ -152,11 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         typingDiv.innerHTML = `
             <div class="message-content">
-                <div class="typing-indicator">
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                </div>
+                <div class="spinner"></div>
             </div>
         `;
         

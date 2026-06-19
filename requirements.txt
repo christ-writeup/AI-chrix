@@ -6,3 +6,4 @@ langchain-core
 rank_bm25
 flask
 gunicorn
+langchain-classic

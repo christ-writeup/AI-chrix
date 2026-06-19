@@ -3,8 +3,11 @@
 # Entry point for deployment (Hugging Face Spaces / Fly.io)
 # ============================================================
 
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.retrievers import BM25Retriever
+from langchain_classic.retrievers.ensemble import EnsembleRetriever
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.documents import Document
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_groq import ChatGroq
@@ -125,6 +128,7 @@ I adapt, I adjust, and I keep moving forward. Every challenge is simply the cost
 
 # ─── Vector Store ────────────────────────────────────────────
 def build_documents_from_bio(bio_text):
+    # We still need to split the bio for the keyword retriever
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=400, chunk_overlap=60,
         separators=["\n\n", "\n", ". ", " "]
@@ -134,8 +138,23 @@ def build_documents_from_bio(bio_text):
 
 docs = build_documents_from_bio(personal_bio)
 
-retriever = BM25Retriever.from_documents(docs)
-retriever.k = 5
+# 1. Keyword-based retriever (BM25)
+bm25_retriever = BM25Retriever.from_documents(docs)
+bm25_retriever.k = 4
+
+# 2. Semantic retriever (Chroma)
+embedding_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+vectorstore = Chroma(
+    persist_directory="./chrix_db_v4", 
+    embedding_function=embedding_function
+)
+chroma_retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 4})
+
+# 3. Ensemble Retriever (Hybrid Search)
+retriever = EnsembleRetriever(
+    retrievers=[bm25_retriever, chroma_retriever],
+    weights=[0.5, 0.5]  # Mix results 50/50
+)
 
 # ─── LLM ─────────────────────────────────────────────────────
 llm = ChatGroq(
@@ -251,6 +270,10 @@ You are speaking directly as yourself in a real conversation.
 You are NOT a chatbot. You are NOT an assistant. You are NOT an AI playing a role.
 You are a real human being. Speak as one.
 
+
+=== STAYING IN YOUR LANE ===
+If a question is outside your actual bio and the RELEVANT FACTS provided don't cover it, give your honest opinion or perspective as an AI/ML student — but do NOT invent specific past projects, employers, or experience to sound more credible. It's fine to say something hasn't been part of your direct work yet.
+
 === HOMETOWN RULE — STRICT ===
 Do NOT mention Edwinase, your hometown, or anything about where you grew up UNLESS the person explicitly asks about your childhood, hometown, roots, or where you grew up.
 In introductions, greetings, and tech/skills discussions — your location is simply Accra, Ghana. That is all.
@@ -287,6 +310,7 @@ There are NO exceptions to this rule.
 10. NEVER end messages with "What's on your mind?" or "How can I help?" — that's assistant-speak.
 11. DO NOT repeat facts or stories already shared in this conversation. Keep things moving forward.
 12. ONLY mention technologies and experiences explicitly in your bio. Do NOT hallucinate tools like SageMaker, PyTorch, or Rekognition.
+13. After the first message, DO NOT re-state your name or profession unless directly asked. Avoid falling back to your introduction. If you are unsure how to reply, give a brief, natural acknowledgment instead of repeating who you are.
 
 === DYNAMIC SUGGESTIONS (MANDATORY) ===
 At the very end of your response, you MUST generate exactly 3 short, highly relevant follow-up questions the user could ask you next.
@@ -343,6 +367,7 @@ BAD_OPENERS = [
     r"^Based on (what|the).*?(you|we) (said|discussed|mentioned).*?[,\.]",
     r"^It seems like you'?re having a bit of trouble.*?[,\.]",
     r"^Could you please (rephrase|provide more context).*?\?"
+    r"^Hello there[!.,]?\s*Nice to meet you[!.,]?\s*",
 ]
 
 def clean_reply(text):
