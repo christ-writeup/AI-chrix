@@ -143,11 +143,22 @@ bm25_retriever = BM25Retriever.from_documents(docs)
 bm25_retriever.k = 4
 
 # 2. Semantic retriever (Chroma)
-embedding_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-vectorstore = Chroma(
-    persist_directory="./chrix_db_v4", 
-    embedding_function=embedding_function
+PERSIST_DIR = "./chrix_db_v4"
+embedding_function = HuggingFaceEmbeddings(
+    model_name="all-MiniLM-L6-v2",
+    model_kwargs={"device": "cpu"},
 )
+if os.path.isdir(PERSIST_DIR) and os.listdir(PERSIST_DIR):
+    vectorstore = Chroma(
+        persist_directory=PERSIST_DIR,
+        embedding_function=embedding_function,
+    )
+else:
+    vectorstore = Chroma.from_documents(
+        documents=docs,
+        embedding=embedding_function,
+        persist_directory=PERSIST_DIR,
+    )
 chroma_retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 4})
 
 # 3. Ensemble Retriever (Hybrid Search)
