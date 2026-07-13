@@ -11,7 +11,7 @@ app_port: 7860
 # Chrix Tech — Persona AI v4
 
 A RAG-powered personal AI chatbot that speaks as Christian Agyapong (Chrix Tech).
-Built with LangChain, Groq (Llama 3.1 8B), ChromaDB, and Gradio.
+Built with LangChain, Groq (Qwen3.6 27B), ChromaDB, and Gradio.
 
 ---
 
@@ -94,5 +94,5 @@ fly deploy
 
 - The ChromaDB vector store (`chrix_db_v4/`) is built from the bio on first startup.
   It is excluded from Git via `.gitignore` and will regenerate automatically.
-- The model used is `llama-3.1-8b-instant` via Groq — fast and free-tier friendly.
+- The model used is `qwen/qwen3.6-27b` via Groq — fast and free-tier friendly.
 - All Groq API calls are made server-side; the key is never exposed to the browser.

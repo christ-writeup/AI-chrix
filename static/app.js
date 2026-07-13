@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const suggestions = document.querySelectorAll('.suggestion-chip');
 
     // State
-    let chatHistory = [];
+    let chatHistory = [
+        ["Hi", "Hey! I'm Christian Agyapong, but most people know me as Chrix Tech. I study Computer Science at the University of Ghana, majoring in AI and Machine Learning. Feel free to ask me anything about my background, projects, or goals!"]
+    ];
     let isWaitingForResponse = false;
     let abortController = new AbortController();
 
@@ -28,7 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     clearBtn.addEventListener('click', () => {
-        chatHistory = [];
+        chatHistory = [
+            ["Hi", "Hey! I'm Christian Agyapong, but most people know me as Chrix Tech. I study Computer Science at the University of Ghana, majoring in AI and Machine Learning. Feel free to ask me anything about my background, projects, or goals!"]
+        ];
         chatMessages.innerHTML = `
             <div class="message ai-message">
                 <div class="message-content">Hey! I'm Christian Agyapong, but most people know me as Chrix Tech. I study Computer Science at the University of Ghana, majoring in AI and Machine Learning. Feel free to ask me anything about my background, projects, or goals!</div>
