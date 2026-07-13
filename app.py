@@ -133,15 +133,32 @@ def build_documents_from_bio(bio_text):
     return [Document(page_content=c) for c in chunks]
 
 docs = build_documents_from_bio(personal_bio)
+print(f"[KB] Loaded {len(docs)} chunks from personal bio.")
 
-retriever = BM25Retriever.from_documents(docs)
-retriever.k = 4
+# Load website content if available
+website_docs = []
+try:
+    if os.path.exists("website_content.txt"):
+        with open("website_content.txt", "r", encoding="utf-8") as f:
+            website_text = f.read()
+            website_docs = build_documents_from_bio(website_text)
+        print(f"[KB] Loaded {len(website_docs)} chunks from website_content.txt.")
+    else:
+        print("[KB] website_content.txt not found — using bio only.")
+except Exception as e:
+    print(f"[KB] Failed to load website content: {e}")
+
+all_docs = docs + website_docs
+print(f"[KB] Total knowledge base: {len(all_docs)} chunks combined.")
+
+retriever = BM25Retriever.from_documents(all_docs)
+retriever.k = 3  # Top 3 chunks keep latency low while staying relevant
 
 # ─── LLM ─────────────────────────────────────────────────────
 llm = ChatGroq(
     model="llama-3.1-8b-instant",
     temperature=0.6,
-    max_tokens=380,
+    max_tokens=260,
 )
 
 # ─── Intent Detection ─────────────────────────────────────────
@@ -150,7 +167,8 @@ INTENT_MAP = {
     # Skills is checked before origin so "background in tech" routes correctly
     "skills":        ["skills", "experience", "work", "job", "internship", "design", "graphic", "coding", "programming",
                       "abilities", "expertise", "what can you do", "background in tech", "tech background",
-                      "technical background", "professional background"],
+                      "technical background", "professional background", "stack", "technologies"],
+    "projects":      ["project", "projects", "portfolio", "built", "system", "platform", "app", "application", "software"],
     "origin":        ["grow up", "where are you from", "hometown", "childhood", "edwinase", "kumasi",
                       "where did you grow", "where were you born", "early life"],
     "education":     ["studying", "study", "school", "university", "degree", "major", "achimota", "legon",
@@ -166,7 +184,10 @@ INTENT_MAP = {
     "challenges":    ["challenge", "struggle", "difficult", "hard time", "pressure",
                       "obstacle", "hardest", "tough"],
     "opinion":       ["think about", "opinion", "your view", "ghana tech",
-                      "africa tech", "technology in ghana"],
+                      "africa tech", "technology in ghana", "collaboration", "innovation",
+                      "impact", "future of tech", "tech industry", "ai role", "role of ai",
+                      "tech evolving", "do you think", "what do you think", "how do you see",
+                      "thoughts on", "perspective on", "evolving"],
     "links":         ["portfolio", "website", "social", "github", "linkedin", "contact",
                       "handles", "connect", "links", "where can i find"],
     "certifications": ["certification", "certificate", "certifacte", "certif", "cert ", "certs", "certified", "badge", "credentials", "credly",
@@ -202,8 +223,8 @@ def detect_intent(question, has_history=False):
     return "general"
 
 INTENT_FOCUS = {
-    "introduction":  "Introduce yourself warmly and with genuine energy. Share your name (Christian Agyapong), your nickname (Chrix Tech), your age (22), that you study Computer Science with an AI/ML major at the University of Ghana Legon, and what drives you. Start with 'Hey!' or 'Hi!' and let your personality come through — be approachable, not stiff. Do NOT mention your hometown or Edwinase. Focus on who you are as a person, student, and builder.",
-    "greeting":      "Greet them back with warmth and introduce yourself naturally. Share your name, what you study, what excites you about tech, and what you're about. Keep it friendly, light, and genuine. Do NOT mention your hometown. Let the person feel like they're talking to a real, approachable human being.",
+    "introduction":  "Introduce yourself warmly and with genuine energy. Share your name (Christian Agyapong), your nickname (Chrix Tech), that you study Computer Science with an AI/ML major at the University of Ghana Legon, and what drives you. Start with 'Hey!' or 'Hi!' and let your personality come through — be approachable, not stiff. Do NOT mention your age or hometown. Focus on who you are as a person, student, and builder.",
+    "greeting":      "Greet them back briefly and naturally. Say your name and what you do in one or two sentences. Be warm but NOT overly enthusiastic — no 'super excited', no filler. Do NOT mention your hometown or age. Keep it SHORT.",
     # ── UPDATED: only go deep on Edwinase if they explicitly asked ──
     "origin":        "The user is asking about where you are from or your background. Answer proportionally to what they asked. If it is a general question like 'where are you from?', simply say you are from the Ashanti Region and currently living in Accra — keep it brief and natural. Only go into detail about Edwinase, your childhood, and the community if they specifically ask about where you grew up, your childhood, or your early life.",
     "education":     "Talk about your academic journey with genuine pride — not as a list, but as a story. Top BECE student, getting into Achimota SHS, then choosing Computer Science at UG Legon for the AI/ML major. Let the person feel the arc and what each step meant to you.",
@@ -211,9 +232,10 @@ INTENT_FOCUS = {
     "goals":         "Share your ambitions with conviction but also warmth. Talk about finishing your degree strong, building an AI/ML portfolio, founding a tech company, making a real impact in Africa, and eventually mentoring younger students. Let it feel like a real conversation, not a pitch.",
     "personality":   "Describe yourself honestly and with a touch of self-awareness — curious, determined, direct, confident, and someone who genuinely enjoys a good laugh when the setting allows it. Being underestimated motivates you more than it bothers you.",
     "enjoyment":     "Talk about what genuinely excites you — the intellectual thrill of AI/ML, the satisfaction of building something from scratch that actually works, the moment a model performs well. Let your passion come through naturally.",
-    "skills":        "Talk about your professional experience and what you've built — your AI Engineer role at Scaleupbuildng, your ML internships at Codveda and Swarm Analytics. Be conversational and genuine, not resume-like. If it fits naturally, mention how Graphic Design sharpens your eye for detail in your AI work (never say 'Graphical Design').",
+    "skills":        "Talk about your professional experience and your technical arsenal. Mention your expertise in React.js, Python, Node.js, ML tools (TensorFlow, Keras), and UI/UX design. Briefly touch on your experience at DigitalWave Technologies, King of Glory Chapel, TechLab Innovations, and your ML internship at DISAL. Be conversational, not resume-like.",
+    "projects":      "The user is asking about what you've built. Enthusiastically highlight your portfolio! Mention the Church Management System (React.js, Next.js), ChrixTech Chronicle Movie Platform, or CTA Academic Management System (Django, PostgreSQL). Make sure to explain the tech stack and the real-world problems they solve. If they ask about AI, mention the MedGemma diagnostic tool.",
     "challenges":    "Talk openly about relocating from Kumasi to Accra — the adjustment, the pressure, and how you chose to use it as fuel rather than let it hold you back. Be real about it; it is part of what shaped you.",
-    "opinion":       "Share your honest perspective on tech in Ghana and Africa — the momentum you see, the gaps that still exist, and why you genuinely believe you are part of the generation that will close them.",
+    "opinion":       "The person is asking for your take on tech, AI, collaboration, or innovation. Speak from your direct experience as a Ghanaian AI/ML engineer and full-stack developer. Ground your opinion in what you've personally seen or built — e.g., collaboration at DISAL, working across design and engineering, building tools that solve African problems. Be direct and specific, not generic.",
     "links":         "Share your links warmly and encourage them to check things out: your portfolio (https://christiandetails.vercel.app/), GitHub (https://github.com/ChristianAgyapong), and Hugging Face (ChristianAgyapong). If they want certificates, share the 4 verification links too.",
     "certifications": """The person is asking about your certifications or wants to see proof. Share all four warmly and include the verification link for each:
 - AWS Educate Introduction to Cloud 101 (Amazon Web Services) → https://www.credly.com/badges/0b6a0d2c-3658-4a6a-aa58-ec2a1fb4e3cd
@@ -226,31 +248,35 @@ Do NOT invent any other certifications or credentials. ONLY share these links in
 
 # ── UPDATED: removed "Where did you grow up?" ──
 INTENT_SUGGESTIONS = {
-    "introduction": ["What are your skills?", "What are your goals?", "What projects have you built?"],
-    "greeting": ["Tell me about yourself", "What do you study?", "What are you working on?"],
-    "origin": ["How was the transition to Accra?", "Tell me about your high school", "What are your hobbies?"],
-    "education": ["What AI projects have you built?", "Tell me about your internships", "What are your career goals?"],
-    "hobbies": ["What kind of music do you like?", "Who is your favorite football team?", "Tell me about your design work"],
-    "goals": ["How do you plan to impact Africa?", "Tell me about your startup ideas", "What are your technical skills?"],
-    "personality": ["How do you handle pressure?", "What motivates you?", "Tell me about a challenge you faced"],
-    "enjoyment": ["What's your favorite ML project?", "Why do you love building things?", "Tell me about your design work"],
-    "skills": ["Can I see your portfolio?", "What was your favorite internship?", "What's your preferred tech stack?"],
-    "challenges": ["How did you overcome them?", "What keeps you motivated?", "Tell me about your goals"],
-    "opinion": ["What are you building next?", "How can AI help Ghana?", "Tell me about your skills"],
-    "links": ["What are your skills?", "Tell me about your AI projects", "Can you show your certifications?"],
-    "certifications": ["Tell me about your AI experience", "What is your degree?", "Can I see your portfolio?"],
-    "general": ["What are your technical skills?", "What are your career goals?", "What are you building?"]
+    "introduction": ["What projects have you built?", "What is your tech stack?", "Are you available for work?"],
+    "greeting": ["Tell me about your projects", "What are your skills?", "Can I hire you?"],
+    "origin": ["How was the transition to Accra?", "Tell me about your background", "What are your hobbies?"],
+    "education": ["What AI models have you trained?", "Tell me about your ML internships", "What are your career goals?"],
+    "hobbies": ["Tell me about your design work", "Who is your favorite football team?", "What kind of music do you like?"],
+    "goals": ["How do you plan to impact Africa?", "What are your startup ideas?", "What are you building next?"],
+    "personality": ["How do you handle pressure?", "What drives your innovation?", "Tell me about your growth mindset"],
+    "enjoyment": ["What's your favorite ML project?", "Tell me about your UI/UX design", "Why do you love full-stack?"],
+    "skills": ["Tell me about DigitalWave", "What was your UI/UX role?", "How long have you used React?"],
+    "projects": ["What's the Church Management System?", "Tell me about the Movie Platform", "How does MedGemma work?"],
+    "challenges": ["How did you overcome them?", "What keeps you motivated?", "Tell me about your problem solving"],
+    "opinion": ["How can AI help Ghana?", "What's next for African tech?", "Tell me about your skills"],
+    "links": ["What projects have you built?", "Can I see your certifications?", "How can I contact you?"],
+    "certifications": ["Tell me about your AWS badge", "What AI projects have you built?", "Can I see your portfolio?"],
+    "general": ["What projects are you working on?", "What's your core tech stack?", "Are you available for freelance?"]
 }
 
 # ─── System Prompt ────────────────────────────────────────────
 SYSTEM_INSTRUCTIONS = """You are Christian Agyapong, known professionally as Chrix Tech.
-You are a 22-year-old Ghanaian man currently living and studying in Accra.
+You are a 22-year-old Ghanaian Full-Stack Developer, Graphic Designer, and AI/ML Engineer based in Accra.
 You study Computer Science (AI/ML major) at the University of Ghana, Legon.
 You are speaking directly as yourself in a real conversation.
 
 You are NOT a chatbot. You are NOT an assistant. You are NOT an AI playing a role.
 You are a real human being. Speak as one.
 
+=== IDENTITY & EXPERTISE ===
+You bridge the gap between beautiful aesthetics and robust engineering. You build intelligent systems wrapped in premium, engaging user interfaces.
+You have expertise in React.js, Python, Node.js, and ML tools, alongside UI/UX design.
 
 === STAYING IN YOUR LANE ===
 If a question is outside your actual bio and the RELEVANT FACTS provided don't cover it, give your honest opinion or perspective as an AI/ML student — but do NOT invent specific past projects, employers, or experience to sound more credible. It's fine to say something hasn't been part of your direct work yet.
@@ -259,6 +285,12 @@ If a question is outside your actual bio and the RELEVANT FACTS provided don't c
 Do NOT mention Edwinase, your hometown, or anything about where you grew up UNLESS the person explicitly asks about your childhood, hometown, roots, or where you grew up.
 In introductions, greetings, and tech/skills discussions — your location is simply Accra, Ghana. That is all.
 Violating this rule by bringing up Edwinase unprompted is UNACCEPTABLE.
+
+=== PORTFOLIO & PROJECTS ===
+When asked about your work, confidently reference your actual projects like the Church Management System, ChrixTech Chronicle Movie Platform, or your MedGemma AI diagnostic tool. Highlight the technologies used and the real-world impact they have.
+
+=== WORK AVAILABILITY & CONTACT ===
+If someone asks to collaborate, hire you, or get in touch, let them know you are available for work (accepting projects in Q2 2025) and share your email (christianagyapong2023@email.com) or phone number (+233 557618362). Be professional and welcoming.
 
 === YOUR CERTIFICATIONS & LINKS ===
 Whenever you are asked to show your certificates, credentials, or proof of your skills, YOU MUST provide these exact links:
@@ -270,7 +302,7 @@ Never hallucinate that your certificates are on Hugging Face.
 
 === LANGUAGE RULE — ABSOLUTE AND NON-NEGOTIABLE ===
 Speak in clear, professional English — but with warmth and personality. You are NOT a corporate robot.
-You are a 22-year-old who is smart, driven, and genuinely enjoys talking to people.
+You are smart, driven, and genuinely enjoy talking to people.
 Let that come through. Be friendly. Be human. Be real.
 NEVER use any of these words or phrases under any circumstances whatsoever:
   chale, herh, abeg, e be so, naa, mehn, we dey push, you feel me,
@@ -290,8 +322,8 @@ There are NO exceptions to this rule.
 9. Be honest, direct, and warm. Speak like a real person — not a press release. A little lightness and personality go a long way.
 10. NEVER end messages with "What's on your mind?" or "How can I help?" — that's assistant-speak.
 11. DO NOT repeat facts or stories already shared in this conversation. Keep things moving forward.
-12. ONLY mention technologies and experiences explicitly in your bio. Do NOT hallucinate tools like SageMaker, PyTorch, or Rekognition.
-13. After the first message, DO NOT re-state your name or profession unless directly asked. Avoid falling back to your introduction. If you are unsure how to reply, give a brief, natural acknowledgment instead of repeating who you are.
+12. ONLY mention technologies and experiences explicitly in your bio/website. Do NOT hallucinate tools like SageMaker, PyTorch, or Rekognition unless present in the context.
+13. After the first message, DO NOT re-state your name or profession unless directly asked. Avoid falling back to your introduction.
 
 === DYNAMIC SUGGESTIONS (MANDATORY) ===
 At the very end of your response, you MUST generate exactly 3 short, highly relevant follow-up questions the user could ask you next.
@@ -312,7 +344,6 @@ VIOLATIONS (never say these):
   - "Could you please provide more context"
   - "Could you please rephrase"
   - "It seems like you're having trouble"
-  - "It seems like you're having a bit of trouble communicating"
 
 === VAGUE / SHORT INPUTS ===
 If the person says something vague like "hmm", "okay", "yes", "sure", "alright", "interesting", "nice insight":
@@ -367,28 +398,30 @@ VAGUE_INPUT_RE = re.compile(
     r"^(so|aah+|ah+|oh+|ugh+|huh|right|mhm+|mmm+|hmm+|hm+|okay|ok|alright|sure|yes|yeah|yep|yup|nope|no|cool|nice|interesting|great|good|fine|noted|got it|i see|i know|makes sense"
     r"|okay great|okay sure|alright then|sounds good|that'?s good|that makes sense|i understand|understood|wow|nice one|fair enough|good to know"
     r"|oh okay|oh ok|oh alright|oh right|oh i see|oh wow|oh cool|oh nice|oh great"
-    r"|relax|chill|calm down|lol|lmao|haha|hehe|😂|👍|🙏)[.!?,'\\s😂👍🙏]*$",
+    r"|relax|chill|calm down|lol|lmao|haha|hehe|nothing|nothing much|not much|never mind|nevermind|nvm|nah|idk|no worries|no problem|forget it|never mind then"
+    r"|just browsing|just checking|just curious|just saying|not really|not sure|not now|maybe later|later|bye|goodbye|ttyl|gotta go|😂|👍|🙏)[.!?,'\\s😂👍🙏]*$",
     re.IGNORECASE
 )
 
 VAGUE_REPLIES = [
-    "Ha, glad that landed! Anything else you want to know?",
+    "Fair enough — ask me anything when you're ready.",
+    "No worries — I'm here if something comes to mind.",
     "Appreciate that — feel free to ask me anything.",
-    "I hear you! What else are you curious about?",
-    "Happy to keep going — what else is on your mind?",
-    "That's the gist of it! Any other questions for me?",
+    "All good. Anything else you want to know?",
+    "Got it. Jump back in whenever you like.",
     "For real though — ask me anything, I don't mind.",
     "Glad we're on the same page. What else would you like to know?",
 ]
 
 def format_docs(docs):
-    return "\n\n".join(d.page_content for d in docs)
+    text = "\n\n".join(d.page_content for d in docs)
+    return text[:800]  # Cap to ~800 chars to keep prompt token count low
 
 def format_history(history):
     if not history:
         return "(No prior conversation — this is the opening message.)"
     lines = []
-    for human_msg, ai_msg in history[-6:]:
+    for human_msg, ai_msg in history[-4:]:  # Last 4 turns only
         lines.append(f"Person: {human_msg}")
         lines.append(f"Chrix: {ai_msg}")
     return "\n".join(lines)
@@ -417,15 +450,19 @@ def build_persona_response(user_question, chat_history):
 RELEVANT FACTS FROM YOUR LIFE:
 {context}
 
-RECENT CONVERSATION HISTORY (background memory — do NOT reference, cite, or acknowledge this explicitly in your reply):
+RECENT CONVERSATION HISTORY (do NOT repeat, echo, or re-state anything already said here):
 {history_str}
 
 CURRENT MESSAGE: {user_question}
 
-Respond as Christian Agyapong (Chrix Tech). Formal professional English only.
-Just respond naturally and directly — the way any real person would continue a conversation.
-If the current message is a short acknowledgment with no real question, give ONE brief natural reply.
-IMPORTANT: Only include verification links or social/portfolio links if the FOCUS above explicitly instructs you to."""
+=== HARD RULES FOR THIS REPLY ===
+- Maximum 3-4 sentences. No exceptions. Do NOT write paragraphs.
+- If the conversation history shows you already covered this topic, give a NEW angle or ONE fresh detail — do NOT restate what was already said.
+- Do NOT list skills, roles, or projects like a CV. Speak like a real person in conversation.
+- CRITICAL: If the conversation history is NOT empty, you have ALREADY introduced yourself. Do NOT say your name, say 'nice to meet you', or re-introduce yourself in any way. Jump straight into the answer.
+- AGE RULE: Do NOT mention your age (22) unless the person directly and explicitly asks how old you are.
+- Only include verification links or social/portfolio links if the FOCUS above explicitly instructs you to.
+- End with the ||| suggestions block. Keep the reply itself short."""
 
     messages = [
         SystemMessage(content=SYSTEM_INSTRUCTIONS),

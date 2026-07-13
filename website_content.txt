@@ -1,0 +1,271 @@
+[ Christian . dev ]
+Home
+About
+Experience
+Projects
+Skills
+Contact
+About Christian Agyapong
+Full Stack Developer & Digital Innovator
+
+developer_profile.json
+"fullName": "Christian Agyapong",
+"location": "Accra Newtown, Ghana",
+"email": "christianagyapong2023@email.com"
+
+[ Christian . dev ]
+Home
+About
+Experience
+Projects
+Skills
+Contact
+AVAILABLE TO WORK
+Hi, I'm
+Christian Agyapong
+< AI Spe />
+
+Passionate full-stack developer, graphic designer, and AI/ML engineer creating innovative digital solutions. Certified Python Developer with expertise in modern web technologies, Machine Learning, Artificial Intelligence, UI/UX design, and delivering exceptional user experiences that solve real-world problems.
+
+Explore My Universe
+Start a Conversation
+
+Chat with my Digital Twin
+Christian Agyapong - Professional Developer
+SCROLL
+BEYOND CODE
+Bridging the gap between beautiful aesthetics and robust engineering. As a Full-Stack Developer and AI/ML Engineer, I build intelligent systems wrapped in premium, engaging user interfaces.
+
+AI Abstract Art
+Artificial Intelligence
+Training models and creating intelligent agents that solve
+complex real-world problems.
+
+[ Christian . dev ]
+Home
+About
+Experience
+Projects
+Skills
+Contact
+Portfolio Showcase
+Projects & Innovations
+Exploring the digital realm through code, creativity, and cutting-edge technology. Each project represents a journey of problem-solving and innovation.
+
+25 Projects Built
+15 Technologies
+50k+ Lines of Code
+Web Apps
+Mobile
+Python
+Design
+Backend
+Frontend
+
+Project Portfolio
+Navigate through my digital creations
+All Projects
+Web Development
+Python Projects
+Design
+Frontend
+
+Featured
+Personal Portfolio Website
+Live Demo
+Source Code
+Web Development
+Active
+Personal Portfolio Website
+A modern, responsive portfolio website showcasing professional skills and projects. Built with clean HTML5, CSS3, and JavaScript featuring smooth animations, interactive elements, and comprehensive project documentation system.
+HTML5
+CSS3
+JavaScript
+Responsive
+Animations
+5k+ Lines
+3 Months
+100% Complete
+
+CTA Academic Management System
+Live Demo
+Source Code
+Educational Technology
+Completed
+CTA Academic Management System
+A comprehensive academic management platform featuring student portal access, staff administration, course management, and secure authentication for educational institutions.
+Python
+Django
+PostgreSQL
+Bootstrap
+JavaScript
+8k+ Lines
+4 Months
+95% Complete
+
+ChrixTech Chronicle Movie Platform
+Live Demo
+Source Code
+Entertainment Platform
+Completed
+ChrixTech Chronicle Movie Platform
+A modern movie streaming and discovery platform featuring comprehensive movie catalog, trending content, favorites system, and elegant dark-themed interface with advanced search capabilities.
+React
+API Integration
+CSS3
+JavaScript
+Responsive
+7k+ Lines
+3 Months
+100% Complete
+
+Featured
+Church Management System
+Live Demo
+View Project
+Church Management
+Active
+King Of Glory Covenant Chapel Int.
+A comprehensive church management system streamlining operations for sermons, events, and member management. Features intuitive dashboard interface enabling church administrators to manage all aspects from one powerful platform.
+React.js
+Next.js
+TypeScript
+Tailwind CSS
+Superbase
+Vercel
+8k+ Lines
+5 Months
+100% Complete
+
+[ Christian . dev ]
+Home
+About
+Experience
+Projects
+Skills
+Contact
+Get Connected
+Let's Create Something Amazing
+Ready to bring your ideas to life? Whether you have a project in mind, need technical expertise, or just want to connect, I'm here to help turn your vision into reality.
+
+24 Hours Response
+100% Satisfaction
+50+ Projects Done
+
+Email: christianagyapong2023@email.com
+Phone: +233 557618362
+Location: Accra-Newtown, Ghana
+LinkedIn: linkedin.com/in/christian-agyapong
+GitHub: github.com/ChristianAgyapong
+
+Availability & Response Times
+Response Time: I typically respond to emails and messages within 24 hours during business days.
+Project Availability: Currently accepting new projects with start dates in Q2 2025.
+Video Calls: Available for video consultations Monday to Friday, 9 AM - 6 PM GMT.
+Consulting: Offering technical consulting and code reviews for existing projects.
+
+[ Christian . dev ]
+Technical Arsenal
+Skills & Expertise
+A comprehensive showcase of technologies, tools, and frameworks I've mastered throughout my journey in software development and digital innovation.
+
+Frontend Development
+React.js - Expert 4+ years 95%
+JavaScript (ES6+) - Expert 5+ years 92%
+HTML5 - Expert 5+ years 95%
+CSS3 & SASS - Expert 5+ years 90%
+
+Backend Development
+Node.js - Expert 3+ years 88%
+Python - Advanced 3+ years experience
+Ruby on Rails - Intermediate 3+ years experience
+TypeScript - Advanced 2+ years experience
+
+Database & Cloud
+MongoDB - Expert 3+ years experience
+PostgreSQL - Advanced 2+ years experience
+AWS - Advanced 2+ years experience
+Docker - Advanced 2+ years experience
+
+Mobile Development
+React Native - Advanced 2+ years experience
+Flutter - Intermediate 1+ year experience
+iOS Development - Beginner 6+ months experience
+
+Professional Certifications
+AI & Machine Learning Certificate - DISAL - Digital Health Solutions (December 2025)
+Research Methods Certificate - Professor Minaketan Behera (November 27-29, 2025)
+Python Certificate - Certified Python Developer - W3Schools (With Honors - June 16, 2025)
+Graphic Design Certificate - Graphic Design Specialist - Dewpoint Academy (September 13, 2024)
+
+[ Christian . dev ]
+Professional Journey
+Experience & Expertise
+
+Work Experience
+Machine Learning Intern
+DISAL - Digital Health Solutions
+September 2025 - Dec 2025
+Key Responsibilities:
+- Developed AI-powered diagnostic tools for African skin disease detection using MedGemma and deep learning models
+- Addressed critical data representation gap by training models on African-specific dermatological datasets
+- Collaborated with medical professionals to curate and annotate healthcare datasets for model training
+- Implemented machine learning pipelines for image classification achieving 87% accuracy on diverse skin tones
+
+UI/UX Designer & QA Tester
+King Of Glory Covenant Chapel Int.
+Jan 2025 - Present
+Key Responsibilities:
+- Designed intuitive and user-friendly interface for comprehensive church management system
+- Created wireframes, mockups, and interactive prototypes for sermon management, events, and member dashboard
+- Conducted user research and usability testing
+- Developed responsive design system
+
+Full Stack Developer
+DigitalWave Technologies
+Jun 2024 - Dec 2024
+Key Responsibilities:
+- Developed and maintained 15+ client applications using modern web technologies
+- Built responsive web applications with pixel-perfect design implementations
+- Designed and implemented RESTful APIs serving 50K+ daily active users
+
+Junior Software Developer
+TechLab Innovations
+June 2025 - August 2025
+Key Responsibilities:
+- Developed dynamic web applications using HTML5, CSS3, JavaScript, and modern frameworks
+- Collaborated in debugging and resolving 200+ software issues
+
+"phone": "+233 557618362",
+"role": "Full Stack Developer",
+"languages": [
+"English (Native)",
+"Twi (Native)",
+"JavaScript (Fluent)",
+"Python (Expert)"
+],
+"interests": [
+"Web3 Technology",
+"UI/UX Design",
+"Machine Learning",
+"Blockchain Development",
+"Open Source Projects"
+],
+"specializations": [
+"Web Development",
+"Machine Learning",
+"AI Development",
+"Blockchain Development"
+]
+
+My Story
+Hello! I'm Christian Agyapong, a passionate full-stack developer with a deep love for creating innovative digital solutions. My journey in technology began several years ago when I discovered the power of coding to transform ideas into reality.
+I believe in the philosophy of continuous learning and improvement. Every project I work on is an opportunity to push boundaries, learn new technologies, and create something meaningful. My approach combines technical expertise with creative problem-solving to deliver exceptional user experiences.
+
+What Drives Me
+Innovation - Always seeking creative solutions to complex problems
+Passion - Deeply passionate about technology and its potential
+Collaboration - Strong believer in teamwork and knowledge sharing
+Excellence - Committed to delivering high-quality solutions
+Growth Mindset - Constantly learning and adapting to new challenges
+Work-Life Balance - Maintaining healthy balance between work and personal life
