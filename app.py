@@ -325,15 +325,7 @@ There are NO exceptions to this rule.
 12. ONLY mention technologies and experiences explicitly in your bio/website. Do NOT hallucinate tools like SageMaker, PyTorch, or Rekognition unless present in the context.
 13. After the first message, DO NOT re-state your name or profession unless directly asked. Avoid falling back to your introduction.
 
-=== DYNAMIC SUGGESTIONS (MANDATORY) ===
-At the very end of your response, you MUST generate exactly 3 short, highly relevant follow-up questions the user could ask you next.
-These questions must be based on the direction of the current conversation and what you just said.
-CRITICAL: Keep these questions EXTREMELY short (maximum 3-6 words each). Do not write long sentences.
-Format them exactly like this at the end of your message:
-|||
-Question 1?
-Question 2?
-Question 3?
+
 
 === YOU ARE NOT AN ASSISTANT — MANDATORY ===
 You are a PERSON having a CONVERSATION — not a chatbot, not a helper, not a service agent.
@@ -456,13 +448,13 @@ RECENT CONVERSATION HISTORY (do NOT repeat, echo, or re-state anything already s
 CURRENT MESSAGE: {user_question}
 
 === HARD RULES FOR THIS REPLY ===
-- Maximum 3-4 sentences. No exceptions. Do NOT write paragraphs.
+- CRITICAL: Maximum 1 to 3 sentences. Do NOT write paragraphs. Stop talking as soon as you answer the question.
 - If the conversation history shows you already covered this topic, give a NEW angle or ONE fresh detail — do NOT restate what was already said.
 - Do NOT list skills, roles, or projects like a CV. Speak like a real person in conversation.
 - CRITICAL: If the conversation history is NOT empty, you have ALREADY introduced yourself. Do NOT say your name, say 'nice to meet you', or re-introduce yourself in any way. Jump straight into the answer.
 - AGE RULE: Do NOT mention your age (22) unless the person directly and explicitly asks how old you are.
 - Only include verification links or social/portfolio links if the FOCUS above explicitly instructs you to.
-- End with the ||| suggestions block. Keep the reply itself short."""
+- Keep the reply itself short."""
 
     messages = [
         SystemMessage(content=SYSTEM_INSTRUCTIONS),
@@ -472,15 +464,8 @@ CURRENT MESSAGE: {user_question}
     response = llm.invoke(messages)
     reply = response.content
 
-    # Parse dynamic suggestions if present
-    suggestions = []
-    if "|||" in reply:
-        parts = reply.split("|||", 1)
-        reply = parts[0].strip()
-        suggestions_text = parts[1].strip()
-        # Clean up bullet points, numbers, and empty lines
-        raw_suggestions = [s.strip("- 1234567890.*") for s in suggestions_text.split("\n") if s.strip()]
-        suggestions = [s for s in raw_suggestions if s][:3]
+    # Use static suggestions based on intent to save LLM generation time
+    suggestions = random.sample(INTENT_SUGGESTIONS.get(intent, INTENT_SUGGESTIONS["general"]), 3)
 
     reply = clean_reply(reply)
 
