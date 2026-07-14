@@ -459,6 +459,12 @@ def build_persona_response(user_question, chat_history):
         intent = "general"
     focus = INTENT_FOCUS[intent]
 
+    # Fix: if we failed to generate a real reply before, give a correct non-empty response
+    # (prevents falling into the empty-reply fallback).
+    if not focus:
+        focus = INTENT_FOCUS["general"]
+
+
     relevant_docs = retriever.invoke(user_question)
     context = format_docs(relevant_docs)
     history_str = format_history(chat_history)
