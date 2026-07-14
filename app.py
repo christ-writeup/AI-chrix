@@ -155,11 +155,20 @@ retriever = BM25Retriever.from_documents(all_docs)
 retriever.k = 3  # Top 3 chunks keep latency low while staying relevant
 
 # ─── LLM ─────────────────────────────────────────────────────
+# Deployment note: GROQ_API_KEY must be provided via deployment secrets.
+api_key = os.environ.get("GROQ_API_KEY")
+if not api_key:
+    raise RuntimeError(
+        "Missing GROQ_API_KEY in environment. "
+        "Set it in your deployment secrets (e.g., fly secrets set GROQ_API_KEY=...)."
+    )
+
 llm = ChatGroq(
     model="qwen/qwen3.6-27b",
     temperature=0.6,
     max_tokens=2048,
 )
+
 
 # ─── Intent Detection ─────────────────────────────────────────
 INTENT_MAP = {
@@ -477,8 +486,14 @@ CURRENT MESSAGE: {user_question}
         HumanMessage(content=human_text)
     ]
 
-    response = llm.invoke(messages)
-    reply = response.content
+    try:
+        response = llm.invoke(messages)
+        reply = response.content
+    except Exception as e:
+        err = f"Model generation failed: {type(e).__name__}: {str(e)}"
+        print(err)
+        return err, random.sample(INTENT_SUGGESTIONS.get(intent, INTENT_SUGGESTIONS["general"]), 3)
+
 
     # Use static suggestions based on intent to save LLM generation time
     suggestions = random.sample(INTENT_SUGGESTIONS.get(intent, INTENT_SUGGESTIONS["general"]), 3)
