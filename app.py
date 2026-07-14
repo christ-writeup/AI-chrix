@@ -163,11 +163,13 @@ if not api_key:
         "Set it in your deployment secrets (e.g., fly secrets set GROQ_API_KEY=...)."
     )
 
+# Use a smaller max_tokens for faster responses (adjust as needed)
 llm = ChatGroq(
     model="qwen/qwen3.6-27b",
     temperature=0.6,
-    max_tokens=2048,
+    max_tokens=512,
 )
+
 
 
 # ─── Intent Detection ─────────────────────────────────────────
