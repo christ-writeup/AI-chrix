@@ -7,3 +7,9 @@
 - [x] Update `SYSTEM_INSTRUCTIONS` to explicitly forbid emitting reasoning/meta blocks.
 - [x] Validate syntax via `python -m py_compile app.py`.
 
+## Next
+- [x] Add deterministic portfolio + GitHub links to the knowledge base (BM25) in `app.py`.
+- [ ] Ensure the assistant returns those exact URLs when asked about portfolio/GitHub.
+- [ ] Quick chat tests (ask: "portfolio" and "GitHub link").
+
+

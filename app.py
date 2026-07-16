@@ -40,6 +40,24 @@ CERTIFICATIONS:
 - Udemy Prompt Engineering: https://www.udemy.com/certificate/UC-3c9b7a15-1e0d-4dfc-bf92-7f64d469c1bf/
 """
 
+# ─── Portfolio / GitHub (deterministic links for retrieval) ─────────────────
+# IMPORTANT: Put the exact URLs you want the assistant to provide.
+portfolio_github_links = """
+PORTFOLIO LINK:
+- https://christian.dev
+
+GITHUB LINK:
+- https://github.com/chrix-tech
+
+OPTIONAL (REPOS):
+- https://github.com/chrix-tech/chrix-persona
+"""
+
+
+# NOTE: We use this block (in addition to bio + website_content.txt) so BM25
+# retrieval can always find the correct portfolio/GitHub URLs when the user
+# asks for them.
+
 
 # ─── Vector Store (BM25 over chunks) ───────────────────────
 def build_documents_from_bio(bio_text: str):
@@ -62,7 +80,7 @@ try:
 except Exception:
     website_docs = []
 
-all_docs = docs + website_docs
+all_docs = docs + website_docs + build_documents_from_bio(portfolio_github_links)
 
 retriever = BM25Retriever.from_documents(all_docs)
 retriever.k = 1  # latency optimization
@@ -95,14 +113,11 @@ llm = ChatGroq(
     model="qwen/qwen3.6-27b",
     temperature=0.6,
     max_tokens=1800,
-    model_kwargs={
-        "reasoning_format": "hidden",
-        # Groq only accepts "none" or "default" for this model (not "low" —
-        # that caused the BadRequestError). "none" disables reasoning
-        # entirely, which is the right call for a short persona chatbot
-        # that doesn't need multi-step chain-of-thought.
-        "reasoning_effort": "none",
-    },
+    # NOTE: Some langchain-groq versions validate these as top-level
+    # parameters (not inside `model_kwargs`). To keep deployment stable
+    # across environments, we avoid passing them via `model_kwargs`.
+    # If your Groq/langchain version supports disabling reasoning,
+    # you can re-add these as top-level args.
 )
 
 
