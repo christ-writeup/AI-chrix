@@ -129,6 +129,7 @@ html, body {
 
     /* Clip children strictly */
     overflow: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Subtle top-edge glow */

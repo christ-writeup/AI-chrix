@@ -371,9 +371,21 @@ def build_persona_response(user_question: str, chat_history):
     intent = detect_intent(user_question)
     focus = INTENT_FOCUS.get(intent, INTENT_FOCUS["general"])
 
-    relevant_docs = retriever.invoke(user_question)
+    # Help the retriever by biasing queries toward the right KB section.
+    # This improves precision for “experience” / “skills” style questions.
+    query = user_question
+    q_lower = user_question.strip().lower()
+    if any(k in q_lower for k in ["experience", "work", "company", "job", "intern"]):
+        query = f"professional experience projects responsibilities {user_question}"
+    elif any(k in q_lower for k in ["skill", "skills", "tech stack", "technology", "tools"]):
+        query = f"technical skills programming languages frontend backend databases cloud skills {user_question}"
+    elif any(k in q_lower for k in ["portfolio", "github"]):
+        query = f"portfolio github links {user_question}"
+
+    relevant_docs = retriever.invoke(query)
     context = format_docs(relevant_docs)
     history_str = format_history(chat_history)
+
 
     human_text = (
         "FOCUS FOR THIS REPLY:\n"
