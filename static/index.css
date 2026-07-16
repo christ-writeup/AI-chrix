@@ -362,19 +362,53 @@ html, body {
     40% { transform: scale(1.0); }
 }
 
-/* New Spinner Styles */
+/* Minimal “dots” loader (visible, but not bar/shape-like) */
 .spinner {
-    width: 24px;
-    height: 24px;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    border-top-color: #fff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+    width: 34px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
+/* Use pseudo-elements so we don't depend on extra markup */
+.spinner::before,
+.spinner::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    animation: dotPulse 1.0s ease-in-out infinite;
 }
+
+.spinner::after {
+    animation-delay: 0.18s;
+}
+
+/* Middle dot */
+.spinner {
+    position: relative;
+}
+.spinner span { display: none; }
+.spinner::marker { display: none; }
+
+/* Middle dot via radial gradient */
+.spinner {
+    background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.90) 0 3px, transparent 3px)
+        center;
+    background-repeat: no-repeat;
+}
+
+@keyframes dotPulse {
+    0%, 100% { transform: translateY(0); opacity: 0.55; }
+    50% { transform: translateY(-5px); opacity: 1; }
+}
+
+
+
 
 /* ============================================================
    ZONE 3 — INPUT AREA  (absolute, pinned to bottom)

@@ -1,0 +1,9 @@
+# TODO — Chrix Tech Persona AI
+
+## Completed
+- [x] Reduce LLM verbosity by lowering `max_tokens`.
+- [x] Harden `clean_reply()` to remove `<think>` blocks (including truncated cases).
+- [x] Enforce a strict 1–5 sentence output limit in `clean_reply()`.
+- [x] Update `SYSTEM_INSTRUCTIONS` to explicitly forbid emitting reasoning/meta blocks.
+- [x] Validate syntax via `python -m py_compile app.py`.
+

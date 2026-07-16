@@ -1,271 +1,305 @@
-[ Christian . dev ]
-Home
-About
-Experience
-Projects
-Skills
-Contact
-About Christian Agyapong
-Full Stack Developer & Digital Innovator
+{
+  "developer_profile": {
+    "fullName": "Christian Agyapong",
+    "location": "Accra, Ghana",
+    "email": "christianagyapong2023@email.com",
+    "phone": "+233557618362",
+    "role": [
+      "AI Engineer",
+      "Machine Learning Engineer",
+      "Full Stack Developer",
+      "Software Engineer",
+      "Researcher"
+    ],
+    "availability": "Available for AI engineering, software development, research collaboration, and technical consulting opportunities."
+  },
 
-developer_profile.json
-"fullName": "Christian Agyapong",
-"location": "Accra Newtown, Ghana",
-"email": "christianagyapong2023@email.com"
+  "about": {
+    "title": "About Christian Agyapong",
+    "category": "professional_identity",
+    "keywords": [
+      "Christian Agyapong",
+      "AI Engineer",
+      "Machine Learning Engineer",
+      "Software Engineer",
+      "Researcher",
+      "Ghana"
+    ],
+    "content": "Christian Agyapong is an AI Engineer, Machine Learning Engineer, Software Engineer, and researcher from Ghana specializing in building intelligent digital systems that solve real-world problems. His expertise combines Artificial Intelligence, Machine Learning, Full Stack Development, Retrieval-Augmented Generation (RAG), Computer Vision, Natural Language Processing, Cloud Computing, and modern software engineering practices. Christian focuses on creating practical AI solutions for healthcare, education, business automation, and digital transformation. He combines strong engineering skills with UI/UX design knowledge to build systems that are both intelligent and user-friendly."
+  },
 
-[ Christian . dev ]
-Home
-About
-Experience
-Projects
-Skills
-Contact
-AVAILABLE TO WORK
-Hi, I'm
-Christian Agyapong
-< AI Spe />
+  "professional_profile": {
+    "title": "Professional Profile",
+    "content": "Christian specializes in designing end-to-end software and AI systems. His experience covers the complete development lifecycle, including data preparation, machine learning model development, AI integration, backend engineering, frontend development, database architecture, cloud deployment, and user experience design. He enjoys transforming complex technical ideas into scalable products that create measurable impact."
+  },
 
-Passionate full-stack developer, graphic designer, and AI/ML engineer creating innovative digital solutions. Certified Python Developer with expertise in modern web technologies, Machine Learning, Artificial Intelligence, UI/UX design, and delivering exceptional user experiences that solve real-world problems.
+  "ai_expertise": {
+    "title": "Artificial Intelligence Experience",
+    "category": "AI_ML",
+    "keywords": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "RAG",
+      "LLM",
+      "AI Agents",
+      "Computer Vision",
+      "NLP"
+    ],
+    "content": "Christian has practical experience developing artificial intelligence systems including Retrieval-Augmented Generation applications, AI assistants, machine learning pipelines, computer vision models, and natural language processing systems. His AI experience includes building knowledge retrieval systems, integrating large language models, designing prompt workflows, creating intelligent automation solutions, training deep learning models, evaluating model performance, and deploying AI-powered applications."
+  },
 
-Explore My Universe
-Start a Conversation
+  "technical_skills": {
+    "title": "Technical Skills",
+    "skills": {
+      "Artificial Intelligence": [
+        "Machine Learning",
+        "Deep Learning",
+        "Large Language Models",
+        "Retrieval-Augmented Generation (RAG)",
+        "AI Agents",
+        "Prompt Engineering",
+        "Natural Language Processing",
+        "Computer Vision",
+        "Model Fine-tuning",
+        "Transformer Models"
+      ],
 
-Chat with my Digital Twin
-Christian Agyapong - Professional Developer
-SCROLL
-BEYOND CODE
-Bridging the gap between beautiful aesthetics and robust engineering. As a Full-Stack Developer and AI/ML Engineer, I build intelligent systems wrapped in premium, engaging user interfaces.
+      "Programming Languages": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Java",
+        "SQL",
+        "HTML",
+        "CSS"
+      ],
 
-AI Abstract Art
-Artificial Intelligence
-Training models and creating intelligent agents that solve
-complex real-world problems.
+      "Frontend Development": [
+        "React",
+        "Next.js",
+        "React Native",
+        "Tailwind CSS",
+        "JavaScript",
+        "Responsive Design"
+      ],
 
-[ Christian . dev ]
-Home
-About
-Experience
-Projects
-Skills
-Contact
-Portfolio Showcase
-Projects & Innovations
-Exploring the digital realm through code, creativity, and cutting-edge technology. Each project represents a journey of problem-solving and innovation.
+      "Backend Development": [
+        "Node.js",
+        "Express.js",
+        "FastAPI",
+        "REST APIs",
+        "Database Design",
+        "Authentication Systems"
+      ],
 
-25 Projects Built
-15 Technologies
-50k+ Lines of Code
-Web Apps
-Mobile
-Python
-Design
-Backend
-Frontend
+      "Databases": [
+        "PostgreSQL",
+        "MongoDB",
+        "Firebase Firestore",
+        "Supabase"
+      ],
 
-Project Portfolio
-Navigate through my digital creations
-All Projects
-Web Development
-Python Projects
-Design
-Frontend
+      "Cloud And Deployment": [
+        "Firebase",
+        "Google Cloud",
+        "AWS",
+        "Docker",
+        "Vercel",
+        "GitHub"
+      ],
 
-Featured
-Personal Portfolio Website
-Live Demo
-Source Code
-Web Development
-Active
-Personal Portfolio Website
-A modern, responsive portfolio website showcasing professional skills and projects. Built with clean HTML5, CSS3, and JavaScript featuring smooth animations, interactive elements, and comprehensive project documentation system.
-HTML5
-CSS3
-JavaScript
-Responsive
-Animations
-5k+ Lines
-3 Months
-100% Complete
+      "AI Frameworks And Tools": [
+        "PyTorch",
+        "TensorFlow",
+        "Scikit-Learn",
+        "Hugging Face",
+        "LangChain",
+        "LangGraph",
+        "OpenAI API",
+        "Gemini API"
+      ],
 
-CTA Academic Management System
-Live Demo
-Source Code
-Educational Technology
-Completed
-CTA Academic Management System
-A comprehensive academic management platform featuring student portal access, staff administration, course management, and secure authentication for educational institutions.
-Python
-Django
-PostgreSQL
-Bootstrap
-JavaScript
-8k+ Lines
-4 Months
-95% Complete
+      "Design": [
+        "Figma",
+        "UI/UX Design",
+        "Graphic Design",
+        "Prototyping"
+      ]
+    }
+  },
 
-ChrixTech Chronicle Movie Platform
-Live Demo
-Source Code
-Entertainment Platform
-Completed
-ChrixTech Chronicle Movie Platform
-A modern movie streaming and discovery platform featuring comprehensive movie catalog, trending content, favorites system, and elegant dark-themed interface with advanced search capabilities.
-React
-API Integration
-CSS3
-JavaScript
-Responsive
-7k+ Lines
-3 Months
-100% Complete
+  "professional_experience": [
+    {
+      "position": "AI Engineer",
+      "organization": "ScaleUpBuild",
+      "focus": "Artificial Intelligence and Business Automation",
+      "responsibilities": [
+        "Developed AI-powered solutions for business automation",
+        "Built Retrieval-Augmented Generation systems",
+        "Integrated AI assistants with business workflows",
+        "Designed intelligent customer support solutions using LLM technologies"
+      ]
+    },
 
-Featured
-Church Management System
-Live Demo
-View Project
-Church Management
-Active
-King Of Glory Covenant Chapel Int.
-A comprehensive church management system streamlining operations for sermons, events, and member management. Features intuitive dashboard interface enabling church administrators to manage all aspects from one powerful platform.
-React.js
-Next.js
-TypeScript
-Tailwind CSS
-Superbase
-Vercel
-8k+ Lines
-5 Months
-100% Complete
+    {
+      "position": "Machine Learning Intern",
+      "organization": "DISAL - Digital Health Solutions",
+      "period": "September 2025 - December 2025",
+      "responsibilities": [
+        "Worked on AI-powered healthcare solutions",
+        "Collaborated on MedGemma-based skin disease detection research",
+        "Prepared and analyzed medical datasets",
+        "Supported machine learning model training and evaluation",
+        "Addressed representation challenges in African healthcare datasets"
+      ]
+    },
 
-[ Christian . dev ]
-Home
-About
-Experience
-Projects
-Skills
-Contact
-Get Connected
-Let's Create Something Amazing
-Ready to bring your ideas to life? Whether you have a project in mind, need technical expertise, or just want to connect, I'm here to help turn your vision into reality.
+    {
+      "position": "UI/UX Designer and QA Tester",
+      "organization": "King Of Glory Covenant Chapel International",
+      "responsibilities": [
+        "Designed user interfaces for church management systems",
+        "Created wireframes and prototypes",
+        "Performed usability testing",
+        "Developed responsive design systems"
+      ]
+    },
 
-24 Hours Response
-100% Satisfaction
-50+ Projects Done
+    {
+      "position": "Full Stack Developer",
+      "organization": "DigitalWave Technologies",
+      "responsibilities": [
+        "Developed full-stack web applications",
+        "Built frontend interfaces and backend APIs",
+        "Designed database structures",
+        "Implemented responsive and scalable solutions"
+      ]
+    }
+  ],
 
-Email: christianagyapong2023@email.com
-Phone: +233 557618362
-Location: Accra-Newtown, Ghana
-LinkedIn: linkedin.com/in/christian-agyapong
-GitHub: github.com/ChristianAgyapong
+  "featured_projects": [
+    {
+      "name": "AI WhatsApp Business Assistant",
+      "category": "Generative AI / RAG",
+      "description": "A Retrieval-Augmented Generation system designed to provide intelligent responses using business knowledge bases and documents.",
+      "technologies": [
+        "Python",
+        "LLMs",
+        "LangGraph",
+        "Vector Database",
+        "PostgreSQL",
+        "Firebase"
+      ],
+      "features": [
+        "Semantic search",
+        "Document retrieval",
+        "Knowledge base integration",
+        "Conversation memory",
+        "AI automation"
+      ]
+    },
 
-Availability & Response Times
-Response Time: I typically respond to emails and messages within 24 hours during business days.
-Project Availability: Currently accepting new projects with start dates in Q2 2025.
-Video Calls: Available for video consultations Monday to Friday, 9 AM - 6 PM GMT.
-Consulting: Offering technical consulting and code reviews for existing projects.
+    {
+      "name": "African Skin Disease Detection System",
+      "category": "Healthcare AI",
+      "description": "A machine learning research project focused on improving skin disease detection using AI models trained with African-specific healthcare data.",
+      "technologies": [
+        "Deep Learning",
+        "Computer Vision",
+        "MedGemma",
+        "Python"
+      ]
+    },
 
-[ Christian . dev ]
-Technical Arsenal
-Skills & Expertise
-A comprehensive showcase of technologies, tools, and frameworks I've mastered throughout my journey in software development and digital innovation.
+    {
+      "name": "TweetEval NLP Classification Model",
+      "category": "Natural Language Processing",
+      "description": "A three-class NLP classification model for identifying safe content, neutral content, and offensive/hate speech categories.",
+      "technologies": [
+        "Python",
+        "Transformers",
+        "NLP",
+        "Machine Learning"
+      ]
+    },
 
-Frontend Development
-React.js - Expert 4+ years 95%
-JavaScript (ES6+) - Expert 5+ years 92%
-HTML5 - Expert 5+ years 95%
-CSS3 & SASS - Expert 5+ years 90%
+    {
+      "name": "Christian.dev Portfolio Platform",
+      "category": "Web Development",
+      "description": "A modern developer portfolio showcasing Christian's AI engineering, software development, research, and design capabilities.",
+      "technologies": [
+        "React",
+        "JavaScript",
+        "Tailwind CSS"
+      ]
+    }
+  ],
 
-Backend Development
-Node.js - Expert 3+ years 88%
-Python - Advanced 3+ years experience
-Ruby on Rails - Intermediate 3+ years experience
-TypeScript - Advanced 2+ years experience
+  "research_interests": {
+    "title": "Research Areas",
+    "content": [
+      "Multimodal Artificial Intelligence",
+      "Educational AI",
+      "Healthcare AI",
+      "Computer Vision",
+      "Large Language Models",
+      "Agentic AI",
+      "Retrieval-Augmented Generation",
+      "Human-AI Interaction",
+      "Responsible AI",
+      "Explainable AI"
+    ]
+  },
 
-Database & Cloud
-MongoDB - Expert 3+ years experience
-PostgreSQL - Advanced 2+ years experience
-AWS - Advanced 2+ years experience
-Docker - Advanced 2+ years experience
+  "services": {
+    "title": "Professional Services",
+    "services": [
+      "AI Application Development",
+      "Custom Chatbot Development",
+      "RAG System Development",
+      "Machine Learning Solutions",
+      "Full Stack Web Development",
+      "API Development",
+      "Cloud Deployment",
+      "Software Architecture",
+      "Technical Consulting",
+      "AI Research Collaboration"
+    ]
+  },
 
-Mobile Development
-React Native - Advanced 2+ years experience
-Flutter - Intermediate 1+ year experience
-iOS Development - Beginner 6+ months experience
+  "faq": [
+    {
+      "question": "Who is Christian Agyapong?",
+      "answer": "Christian Agyapong is an AI Engineer, Machine Learning Engineer, Full Stack Developer, and researcher from Ghana focused on building intelligent systems and software solutions."
+    },
 
-Professional Certifications
-AI & Machine Learning Certificate - DISAL - Digital Health Solutions (December 2025)
-Research Methods Certificate - Professor Minaketan Behera (November 27-29, 2025)
-Python Certificate - Certified Python Developer - W3Schools (With Honors - June 16, 2025)
-Graphic Design Certificate - Graphic Design Specialist - Dewpoint Academy (September 13, 2024)
+    {
+      "question": "Does Christian build AI systems?",
+      "answer": "Yes. Christian develops AI systems including RAG applications, AI assistants, machine learning models, NLP systems, and computer vision solutions."
+    },
 
-[ Christian . dev ]
-Professional Journey
-Experience & Expertise
+    {
+      "question": "What technologies does Christian use?",
+      "answer": "Christian works with Python, JavaScript, React, Node.js, PostgreSQL, Firebase, Supabase, Docker, PyTorch, TensorFlow, LangGraph, LangChain, and modern AI APIs."
+    },
 
-Work Experience
-Machine Learning Intern
-DISAL - Digital Health Solutions
-September 2025 - Dec 2025
-Key Responsibilities:
-- Developed AI-powered diagnostic tools for African skin disease detection using MedGemma and deep learning models
-- Addressed critical data representation gap by training models on African-specific dermatological datasets
-- Collaborated with medical professionals to curate and annotate healthcare datasets for model training
-- Implemented machine learning pipelines for image classification achieving 87% accuracy on diverse skin tones
+    {
+      "question": "What type of AI projects has Christian worked on?",
+      "answer": "Christian has worked on AI assistants, healthcare AI systems, NLP classifiers, computer vision projects, and intelligent automation platforms."
+    },
 
-UI/UX Designer & QA Tester
-King Of Glory Covenant Chapel Int.
-Jan 2025 - Present
-Key Responsibilities:
-- Designed intuitive and user-friendly interface for comprehensive church management system
-- Created wireframes, mockups, and interactive prototypes for sermon management, events, and member dashboard
-- Conducted user research and usability testing
-- Developed responsive design system
+    {
+      "question": "What are Christian's research interests?",
+      "answer": "Christian's research interests include multimodal AI, educational AI, healthcare AI, large language models, AI agents, retrieval systems, and responsible AI."
+    }
+  ],
 
-Full Stack Developer
-DigitalWave Technologies
-Jun 2024 - Dec 2024
-Key Responsibilities:
-- Developed and maintained 15+ client applications using modern web technologies
-- Built responsive web applications with pixel-perfect design implementations
-- Designed and implemented RESTful APIs serving 50K+ daily active users
-
-Junior Software Developer
-TechLab Innovations
-June 2025 - August 2025
-Key Responsibilities:
-- Developed dynamic web applications using HTML5, CSS3, JavaScript, and modern frameworks
-- Collaborated in debugging and resolving 200+ software issues
-
-"phone": "+233 557618362",
-"role": "Full Stack Developer",
-"languages": [
-"English (Native)",
-"Twi (Native)",
-"JavaScript (Fluent)",
-"Python (Expert)"
-],
-"interests": [
-"Web3 Technology",
-"UI/UX Design",
-"Machine Learning",
-"Blockchain Development",
-"Open Source Projects"
-],
-"specializations": [
-"Web Development",
-"Machine Learning",
-"AI Development",
-"Blockchain Development"
-]
-
-My Story
-Hello! I'm Christian Agyapong, a passionate full-stack developer with a deep love for creating innovative digital solutions. My journey in technology began several years ago when I discovered the power of coding to transform ideas into reality.
-I believe in the philosophy of continuous learning and improvement. Every project I work on is an opportunity to push boundaries, learn new technologies, and create something meaningful. My approach combines technical expertise with creative problem-solving to deliver exceptional user experiences.
-
-What Drives Me
-Innovation - Always seeking creative solutions to complex problems
-Passion - Deeply passionate about technology and its potential
-Collaboration - Strong believer in teamwork and knowledge sharing
-Excellence - Committed to delivering high-quality solutions
-Growth Mindset - Constantly learning and adapting to new challenges
-Work-Life Balance - Maintaining healthy balance between work and personal life
+  "personal_values": [
+    "Innovation",
+    "Continuous Learning",
+    "Problem Solving",
+    "Collaboration",
+    "Technical Excellence",
+    "Building Impactful Technology"
+  ]
+}
