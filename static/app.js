@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // State
     let chatHistory = [
-        ["Hi", "Hey! I'm Christian Agyapong, but most people know me as Chrix Tech. I study Computer Science at the University of Ghana, majoring in AI and Machine Learning. Feel free to ask me anything about my background, projects, or goals!"]
+        ["Hi", "Hey! I’m Chrix Tech. What would you like to ask—projects, skills, or availability?"]
     ];
     let isWaitingForResponse = false;
     let abortController = new AbortController();
@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     clearBtn.addEventListener('click', () => {
         chatHistory = [
-            ["Hi", "Hey! I'm Christian Agyapong, but most people know me as Chrix Tech. I study Computer Science at the University of Ghana, majoring in AI and Machine Learning. Feel free to ask me anything about my background, projects, or goals!"]
+            ["Hi", "Hey! I’m Chrix Tech. What would you like to ask—projects, skills, or availability?"]
         ];
         chatMessages.innerHTML = `
             <div class="message ai-message">
-                <div class="message-content">Hey! I'm Christian Agyapong, but most people know me as Chrix Tech. I study Computer Science at the University of Ghana, majoring in AI and Machine Learning. Feel free to ask me anything about my background, projects, or goals!</div>
+                <div class="message-content">Hey! I’m Chrix Tech. What would you like to ask—projects, skills, or availability?</div>
                 <span class="message-time" aria-hidden="true">Just now</span>
             </div>
         `;

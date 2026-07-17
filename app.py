@@ -249,7 +249,8 @@ INTENT_FOCUS = {
     "education": "Talk about education and studies briefly. Keep it short.",
     "hobbies": "Talk about hobbies briefly. Keep it short.",
     "goals": "Talk about goals briefly. Keep it short.",
-    "general": "Respond naturally and directly. Keep it short.",
+    # For greetings and general questions, avoid long self-intros.
+    "general": "Answer the message directly, very briefly (1–2 sentences). If it's a greeting, acknowledge and ask what they want to know next.",
 }
 
 INTENT_SUGGESTIONS = {
@@ -390,7 +391,7 @@ def clean_reply(text: str) -> str:
     sentences = [s.strip() for s in sentences if s and s.strip()]
 
     if sentences:
-        text = " ".join(sentences[:6]).strip()
+        text = " ".join(sentences[:4]).strip()
 
 
     # Final safety net: if cleaning wiped everything AND the original
@@ -420,12 +421,14 @@ def format_history(history):
 
 def detect_intent(question: str) -> str:
     q = question.strip().lower()
-    # If the user only greets (e.g., "hey"), treat it as a general message
-    # so we don't always trigger the full introduction flow.
+
+    # Greeting-only should NOT trigger the full introduction every time.
     if GREETING_NO_QUESTION_RE.match(q):
         return "general"
+
+    # “Hey/Hi” with no explicit request is still greeting, not an intro request.
     if GREETING_ONLY_RE.match(q):
-        return "introduction"
+        return "general"
     for intent, keywords in INTENT_MAP.items():
 
         if intent == "general":
@@ -459,6 +462,19 @@ SYSTEM_INSTRUCTIONS = (
 def build_persona_response(user_question: str, chat_history):
     intent = detect_intent(user_question)
     focus = INTENT_FOCUS.get(intent, INTENT_FOCUS["general"])
+
+    # If user is just greeting (e.g., "hey"), force a short, non-repetitive reply.
+    q = user_question.strip().lower()
+    if GREETING_NO_QUESTION_RE.match(q) or GREETING_ONLY_RE.match(q):
+        # Use a single short line + one follow-up. No extra intro.
+        reply = random.choice([
+            "Hey! What would you like to ask—projects, skills, or freelance?",
+            "Hi! Quick one—what are you curious about: projects, AI work, or availability?",
+            "Hey—happy to help. What’s the question?"
+        ])
+        suggestions = random.sample(INTENT_SUGGESTIONS.get("general", []), min(3, len(INTENT_SUGGESTIONS.get("general", []))))
+        return reply, suggestions
+
 
     # Help the retriever by biasing queries toward the right KB section.
     # This improves precision for “experience” / “skills” style questions.

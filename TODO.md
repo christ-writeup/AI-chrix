@@ -6,12 +6,15 @@
 - [x] Enforce a strict 1–5 sentence output limit in `clean_reply()`.
 - [x] Update `SYSTEM_INSTRUCTIONS` to explicitly forbid emitting reasoning/meta blocks.
 - [x] Validate syntax via `python -m py_compile app.py`.
+- [x] Add deterministic portfolio + GitHub links to the knowledge base (BM25) in `app.py`.
+- [x] Make greeting-only messages short and prevent long re-intros.
+- [x] Make the initial UI greeting short (update `templates/index.html` + `static/app.js`).
 
 ## Next
-- [x] Add deterministic portfolio + GitHub links to the knowledge base (BM25) in `app.py`.
-- [ ] Ensure the assistant returns those exact URLs when asked about portfolio/GitHub.
-- [ ] Quick chat tests (ask: "portfolio" and "GitHub link").
-- [ ] Update KB with SHS school name + expected completion/graduation date (and university expected completion date if you want it in KB). (Missing currently)
-
-
+- [ ] Quick chat tests:
+  - ask: "hey" repeatedly
+  - ask: "Are you available for freelance?"
+  - ask: "What projects"
+- [ ] Ensure suggestions don’t steer back into repetitive prompts.
+- [ ] If needed: add “anti-repetition” using last AI message similarity (string-level) in `clean_reply()`.
 
