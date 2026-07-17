@@ -6,7 +6,7 @@
 from langchain_community.retrievers import BM25Retriever
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
-from langchain_core.messages import SystemMessage, HumanMessage
+from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from langchain_groq import ChatGroq
 from flask import Flask, request, jsonify, render_template
 import os
@@ -459,21 +459,83 @@ SYSTEM_INSTRUCTIONS = (
 
 
 
+def _last_ai_reply(chat_history):
+    if not chat_history:
+        return ""
+    # chat_history is list of [human, ai]
+    for pair in reversed(chat_history):
+        if isinstance(pair, (list, tuple)) and len(pair) >= 2:
+            return (pair[1] or "").strip()
+    return ""
+
+
+def _jaccard_similarity(a: str, b: str) -> float:
+    # Fast-ish token overlap for basic anti-repetition.
+    # Not perfect, but works well for short sentences.
+    def tokens(s: str):
+        s = (s or "").lower()
+        s = re.sub(r"[^a-z0-9\s]", " ", s)
+        return {t for t in s.split() if t}
+
+    ta = tokens(a)
+    tb = tokens(b)
+    if not ta or not tb:
+        return 0.0
+    return len(ta & tb) / max(1, len(ta | tb))
+
+
 def build_persona_response(user_question: str, chat_history):
     intent = detect_intent(user_question)
     focus = INTENT_FOCUS.get(intent, INTENT_FOCUS["general"])
 
+    last_ai = _last_ai_reply(chat_history)
+
     # If user is just greeting (e.g., "hey"), force a short, non-repetitive reply.
     q = user_question.strip().lower()
     if GREETING_NO_QUESTION_RE.match(q) or GREETING_ONLY_RE.match(q):
-        # Use a single short line + one follow-up. No extra intro.
-        reply = random.choice([
-            "Hey! What would you like to ask—projects, skills, or freelance?",
-            "Hi! Quick one—what are you curious about: projects, AI work, or availability?",
-            "Hey—happy to help. What’s the question?"
-        ])
-        suggestions = random.sample(INTENT_SUGGESTIONS.get("general", []), min(3, len(INTENT_SUGGESTIONS.get("general", []))))
+        greeting_pool = [
+            "Hey! What do you want to explore today—projects, skills, or availability?",
+            "Hi—what are you curious about: AI work, my projects, or freelance?",
+            "Hey there. Ask me anything—projects, tech skills, or availability.",
+            "Hi! Quick check—do you want details about what I’ve built, or what I do (skills)?",
+            "Hey! I’m Chrix Tech. What should we talk about—AI projects, my stack, or scheduling?",
+            "Hi—what’s the question? I can share projects, experience, or whether I’m available.",
+            "Hey—happy to help. Are you looking for projects, skills, or freelance availability?",
+            "Yo—what’s up? Tell me what you’re looking for: projects, skills, or availability.",
+        ]
+
+        # Anti-repetition: avoid choosing something too similar to the last AI reply.
+        # If the pool gets exhausted, we fall back to a random choice.
+        candidates = []
+        for r in greeting_pool:
+            sim = _jaccard_similarity(r, last_ai)
+            if sim < 0.38:  # threshold tuned for short sentences
+                candidates.append(r)
+
+        reply = random.choice(candidates if candidates else greeting_pool)
+
+        # Suggestions: keep them varied (avoid repeating last AI reply and avoid near-duplicate chips).
+        base_suggestions = INTENT_SUGGESTIONS.get("general", [])
+        suggestions_pool = list(base_suggestions)
+        random.shuffle(suggestions_pool)
+
+        suggestions = []
+        for s in suggestions_pool:
+            if len(suggestions) >= 3:
+                break
+            if _jaccard_similarity(s, last_ai) >= 0.5:
+                continue
+            # Avoid selecting very similar suggestions to each other
+            if any(_jaccard_similarity(s, prev) >= 0.7 for prev in suggestions):
+                continue
+            suggestions.append(s)
+
+        if not suggestions:
+            suggestions = random.sample(base_suggestions, min(3, len(base_suggestions)))
+
         return reply, suggestions
+
+
 
 
     # Help the retriever by biasing queries toward the right KB section.

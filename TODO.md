@@ -8,13 +8,15 @@
 - [x] Validate syntax via `python -m py_compile app.py`.
 - [x] Add deterministic portfolio + GitHub links to the knowledge base (BM25) in `app.py`.
 - [x] Make greeting-only messages short and prevent long re-intros.
-- [x] Make the initial UI greeting short (update `templates/index.html` + `static/app.js`).
+- [x] Update the initial UI greeting to be short (update `templates/index.html` + `static/app.js`).
+- [x] Anti-repetition for greeting/general replies (avoid repeating last AI reply; basic similarity checks).
 
 ## Next
-- [ ] Quick chat tests:
+- [x] Expand greeting variation pool (more than 3 templates).
+- [x] Suggestion anti-repetition (don’t keep showing the same chips after small changes).
+
+- [ ] Quick chat tests after edits:
   - ask: "hey" repeatedly
   - ask: "Are you available for freelance?"
   - ask: "What projects"
-- [ ] Ensure suggestions don’t steer back into repetitive prompts.
-- [ ] If needed: add “anti-repetition” using last AI message similarity (string-level) in `clean_reply()`.
 
