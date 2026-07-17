@@ -308,8 +308,45 @@ REASONING_TAG_RE = re.compile(r"<\s*(think|thinking)\s*>", re.IGNORECASE)
 FALLBACK_REPLY = "Let me try that again — could you ask once more?"
 
 
+def humanize_reply(text: str) -> str:
+    """Lightweight humanization to reduce scripted/robotic feel for short greetings.
+    Runs only on the final cleaned reply.
+    """
+    t = (text or "").strip()
+    if not t:
+        return t
+
+    # Rewrite a few common greeting templates into more natural variants.
+    # Keep it conservative: only trigger on exact-ish lead patterns.
+    t = re.sub(
+        r"^Hey! I’m Chrix Tech\. What would you like to ask—projects, skills, or availability\?\s*$",
+        "Hey—what do you want to dive into today: projects, skills, or availability?",
+        t,
+    )
+    t = re.sub(
+        r"^Hi! Quick one—what are you curious about: projects, AI work, or availability\?\s*$",
+        "Hi! Which one are you curious about right now—projects, AI work, or freelance availability?",
+        t,
+    )
+    t = re.sub(
+        r"^Hey—happy to help\. What’s the question\?\s*$",
+        "Hey—happy to help. What’s the question?",
+        t,
+    )
+
+    # Avoid repetitive “What should we talk about—X, Y, or Z?” loops.
+    t = re.sub(
+        r"^Hey! I’m Chrix Tech\. What should we talk about—AI projects, my stack, or scheduling\?\s*$",
+        "Hey—want the AI projects, my tech stack, or scheduling/availability?",
+        t,
+    )
+
+    return t
+
+
 def clean_reply(text: str) -> str:
     original = text or ""
+
 
     # 1) Remove any reasoning blocks the model may emit.
     # Covers: <think>...</think>, <thinking>...</thinking>, and truncated variants.
@@ -393,8 +430,12 @@ def clean_reply(text: str) -> str:
     if sentences:
         text = " ".join(sentences[:4]).strip()
 
+    # Light humanization pass for very short, template-like replies.
+    text = humanize_reply(text)
+
 
     # Final safety net: if cleaning wiped everything AND the original
+
     # still had a reasoning tag in it, never return the raw text.
     if not text:
         if REASONING_TAG_RE.search(original):
