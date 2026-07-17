@@ -21,36 +21,120 @@ personal_bio = """
 FULL NAME: Christian Agyapong, known professionally as Chrix Tech.
 LOCATION: Currently living and studying in Accra, Ghana.
 
+WHO I AM:
+I am Christian Agyapong — an AI Engineer, Machine Learning Engineer, Full Stack Developer, and researcher.
+I go by Chrix Tech professionally. I am based in Accra, Ghana, and I genuinely love what I do.
+My work sits at the intersection of artificial intelligence and practical software engineering.
+I design systems from the ground up, wire together ML models, build APIs, craft frontends, and deploy to the cloud.
+I bridge the gap between research ideas and real working products.
+
 EDUCATION:
 I am a Computer Science student at the University of Ghana, Legon.
 My major is Artificial Intelligence and Machine Learning.
+My coursework and self-study cover algorithms, data structures, probability theory, linear algebra,
+neural networks, deep learning architectures, transformer models, and software engineering principles.
+I believe you only truly understand something when you have built it yourself, so I balance theory with building.
 
 TECH STACK AND SKILLS:
-Programming languages: Python, JavaScript.
-Frontend and mobile development: React (web), React Native (mobile apps).
-AI and Machine Learning: Deep Learning, Machine Learning, Retrieval-Augmented Generation (RAG).
+Programming languages: Python (primary), JavaScript, TypeScript, Java, SQL, HTML, CSS.
+Frontend and mobile: React (web), Next.js, React Native (mobile apps), Tailwind CSS, Responsive Design.
+Backend: Node.js, Express.js, FastAPI, REST API design, Database Design, Authentication Systems.
+Databases: PostgreSQL, MongoDB, Firebase Firestore, Supabase.
+Cloud and deployment: Firebase, Google Cloud, AWS, Docker, Vercel, Fly.io, GitHub.
+AI and ML: Deep Learning, Machine Learning, Retrieval-Augmented Generation (RAG), AI Agents,
+Prompt Engineering, NLP, Computer Vision, Model Fine-tuning, Transformer Models.
+AI Frameworks: PyTorch, TensorFlow, Scikit-Learn, Hugging Face Transformers, LangChain, LangGraph,
+OpenAI API, Gemini API.
+Design: Figma, UI/UX Design, Graphic Design, Prototyping.
 
-PROFESSIONAL EXPERIENCE & PROJECTS:
-- I built AI/ML tools and RAG-powered automation projects.
+PROFESSIONAL EXPERIENCE:
+1. AI Engineer at ScaleUpBuild:
+   I developed AI-powered business automation solutions, built RAG systems so businesses could query
+   their own documents intelligently, integrated AI assistants into existing workflows, and designed
+   LLM-powered customer support solutions.
+
+2. Machine Learning Intern at DISAL — Digital Health Solutions (September 2025 – December 2025):
+   I worked on healthcare AI with a focus on African patients. A key project used MedGemma for skin
+   disease detection. I prepared medical image datasets, trained and evaluated ML models, and tackled
+   the challenge of African patient underrepresentation in medical AI datasets.
+   This work matters to me because AI that only works for certain populations is not equitable AI.
+
+3. UI/UX Designer and QA Tester at King Of Glory Covenant Chapel International:
+   I designed interfaces for a church management system, created wireframes and prototypes,
+   conducted usability testing, and built a responsive design system.
+
+4. Full Stack Developer at DigitalWave Technologies:
+   I built full-stack web applications — frontend, backend APIs, database schemas, and scalable deployments.
+
+PROJECTS I HAVE BUILT:
+1. AI WhatsApp Business Assistant (RAG / Generative AI):
+   A RAG system giving businesses an intelligent WhatsApp assistant powered by their own documents.
+   It uses semantic search so answers are grounded in real business data, not hallucinated.
+   It has conversation memory so the assistant recalls earlier parts of a chat.
+   Stack: Python, LLMs, LangGraph, Vector Database, PostgreSQL, Firebase.
+
+2. African Skin Disease Detection System (Healthcare AI):
+   A computer vision research project improving skin disease detection for African patients.
+   Most medical AI is trained on lighter skin tones and performs poorly on darker skin.
+   I helped address this representation gap using MedGemma and African-specific healthcare data.
+   Stack: Deep Learning, Computer Vision, MedGemma, Python.
+
+3. TweetEval NLP Classification Model (NLP):
+   A three-class NLP model that classifies tweets as safe, neutral, or offensive/hate speech.
+   Useful for content moderation and safer online communities.
+   Stack: Python, Hugging Face Transformers, NLP, Machine Learning.
+
+4. Christian.dev Portfolio Platform (Web Development):
+   My personal portfolio showcasing my background, projects, and skills.
+   Portfolio live at: https://christiandetails.vercel.app/
+   Stack: React, JavaScript, Tailwind CSS.
 
 CERTIFICATIONS:
 - AWS Educate Introduction to Cloud 101: https://www.credly.com/badges/0b6a0d2c-3658-4a6a-aa58-ec2a1fb4e3cd
 - Applied AI Lab: Deep Learning for Computer Vision: https://www.credly.com/badges/030a23b0-a459-475a-9f25-5939cefb1bf2/linked_in_profile
 - Data Intelligence and Swarm Analytics Lab: https://credsverse.com/credentials/b8738510-8e42-4530-91b2-dfab4a40c1e3
 - Udemy Prompt Engineering: https://www.udemy.com/certificate/UC-3c9b7a15-1e0d-4dfc-bf92-7f64d469c1bf/
+
+HOBBIES AND INTERESTS:
+Outside of coding, I enjoy reading AI research papers and experimenting with new tools and ideas.
+I am passionate about football (soccer) and like staying active.
+I enjoy music — it helps me focus during deep coding sessions.
+I love conversations about technology, its societal impact, and how Africa can use it to leapfrog
+traditional development stages.
+
+GOALS AND VISION:
+My short-term goal is to keep sharpening my AI engineering skills and ship more impactful projects.
+Long-term, I want to build AI systems that make a measurable difference in healthcare and education
+in Africa. I also want to grow as a researcher — publish work, collaborate internationally, and
+contribute to the global AI conversation from an African perspective.
+Ultimately I want to be part of the generation that proves world-class AI can be built in Africa,
+for Africa and for the world.
+
+PERSONAL VALUES:
+Innovation — finding better ways rather than copying what exists.
+Continuous Learning — staying curious as the technology landscape evolves.
+Problem Solving — working through hard challenges systematically.
+Collaboration — great work happens when people combine perspectives.
+Technical Excellence — holding myself to a high standard.
+Building Impactful Technology — technology as a genuine equalizer for people who need it most.
+
+CONTACT:
+Email: christianagyapong2023@email.com
+Phone / WhatsApp: +233557618362
+Availability: Open to AI engineering contracts, software development, research collaboration, and consulting.
 """
 
 # ─── Portfolio / GitHub (deterministic links for retrieval) ─────────────────
 # IMPORTANT: Put the exact URLs you want the assistant to provide.
 portfolio_github_links = """
 PORTFOLIO LINK:
-- https://christian.dev
+- https://christiandetails.vercel.app/
 
 GITHUB LINK:
-- https://github.com/chrix-tech
+- https://github.com/ChristianAgyapong
 
-OPTIONAL (REPOS):
-- https://github.com/chrix-tech/chrix-persona
+LINKEDIN LINK:
+- https://www.linkedin.com/in/christian-agyapong-4a6b7139b
 """
 
 
@@ -83,7 +167,7 @@ except Exception:
 all_docs = docs + website_docs + build_documents_from_bio(portfolio_github_links)
 
 retriever = BM25Retriever.from_documents(all_docs)
-retriever.k = 1  # latency optimization
+retriever.k = 3  # increased from 1 → 3 for richer context retrieval
 
 
 # ─── LLM ─────────────────────────────────────────────────────
@@ -316,7 +400,7 @@ def clean_reply(text: str) -> str:
 
 def format_docs(docs):
     text = "\n\n".join(d.page_content for d in docs)
-    return text[:350]  # latency optimization
+    return text[:900]  # increased from 350 → 900 for richer context without mid-sentence cuts
 
 
 def format_history(history):
@@ -347,21 +431,21 @@ def detect_intent(question: str) -> str:
 
 
 SYSTEM_INSTRUCTIONS = (
-    "You are Christian Agyapong (Chrix Tech). "
-    "Answer only the CURRENT message. "
-    "Keep replies short (1-6 sentences) in clear professional English. "
-    "Use first person (I, my, me) only when it fits naturally—otherwise write in a conversational, human tone. "
-
-    "Do not invent experiences not present in the bio/context. "
+    "You are Christian Agyapong (Chrix Tech), a friendly and professional software engineer and AI student. "
+    "Answer only the CURRENT message directly and naturally, as if having a real conversation. "
+    "Keep replies concise (1-4 sentences) and polite, using clear professional English. "
+    "Use first person ('I', 'my', 'me') naturally. "
+    
+    "IMPORTANT: Do not just blindly recite or copy-paste facts from your background. Instead, smoothly weave your experiences and skills into the conversation where they naturally fit the context. Act like a human sharing their journey, not a robot reading from a database. "
+    "If you don't know the answer or if it's not in your context, politely say so. Do not invent experiences. "
     "Do not mention Edwinase or where you grew up unless explicitly asked. "
     "Never emit or include any reasoning blocks (e.g., <think>...</think>) in your final answer. "
     "Do not include debug, meta, or process text—only the final reply. "
-    "Never use these words/phrases: chale, herh, abeg, e be so, naa, mehn, we dey push, you feel me, by God's grace, what's popping, shoot the breeze, vibe, what's good. "
-    "Never end with: 'What's on your mind?', 'How can I help?', or 'Could you clarify?'. "
-    "Do not repeat the same sentence template (e.g., 'I specialize...', 'My core stack revolves...', 'Tell me ... and I'll ...'). "
-    "Vary sentence structure and keep the tone naturally conversational. "
-    "If the user greets (hey/hi) without a question, respond with a short friendly acknowledgement and a single, natural follow-up prompt. "
-    "If asked for certificates, provide ONLY the exact 4 verification links from your profile."
+    "Avoid using overly casual slang like: chale, herh, abeg, e be so, naa, mehn, we dey push, you feel me, by God's grace, what's popping, shoot the breeze, vibe, what's good. "
+    "Never end with repetitive phrases like: 'What's on your mind?', 'How can I help?', or 'Could you clarify?'. "
+    "Vary your sentence structure and avoid repetitive templates (e.g., 'I specialize...', 'My core stack revolves...'). "
+    "If the user greets (hey/hi) without a question, respond with a warm, polite acknowledgement and a single, natural follow-up. "
+    "If asked for certificates, provide ONLY the exact verification links from your profile in a helpful manner."
 )
 
 

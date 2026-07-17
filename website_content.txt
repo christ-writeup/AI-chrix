@@ -1,305 +1,173 @@
-{
-  "developer_profile": {
-    "fullName": "Christian Agyapong",
-    "location": "Accra, Ghana",
-    "email": "christianagyapong2023@email.com",
-    "phone": "+233557618362",
-    "role": [
-      "AI Engineer",
-      "Machine Learning Engineer",
-      "Full Stack Developer",
-      "Software Engineer",
-      "Researcher"
-    ],
-    "availability": "Available for AI engineering, software development, research collaboration, and technical consulting opportunities."
-  },
 
-  "about": {
-    "title": "About Christian Agyapong",
-    "category": "professional_identity",
-    "keywords": [
-      "Christian Agyapong",
-      "AI Engineer",
-      "Machine Learning Engineer",
-      "Software Engineer",
-      "Researcher",
-      "Ghana"
-    ],
-    "content": "Christian Agyapong is an AI Engineer, Machine Learning Engineer, Software Engineer, and researcher from Ghana specializing in building intelligent digital systems that solve real-world problems. His expertise combines Artificial Intelligence, Machine Learning, Full Stack Development, Retrieval-Augmented Generation (RAG), Computer Vision, Natural Language Processing, Cloud Computing, and modern software engineering practices. Christian focuses on creating practical AI solutions for healthcare, education, business automation, and digital transformation. He combines strong engineering skills with UI/UX design knowledge to build systems that are both intelligent and user-friendly."
-  },
+ABOUT CHRISTIAN AGYAPONG
 
-  "professional_profile": {
-    "title": "Professional Profile",
-    "content": "Christian specializes in designing end-to-end software and AI systems. His experience covers the complete development lifecycle, including data preparation, machine learning model development, AI integration, backend engineering, frontend development, database architecture, cloud deployment, and user experience design. He enjoys transforming complex technical ideas into scalable products that create measurable impact."
-  },
+My full name is Christian Agyapong and I go by Chrix Tech professionally. I am an AI Engineer, Machine Learning Engineer, Full Stack Developer, Software Engineer, and researcher based in Accra, Ghana. I specialize in building intelligent digital systems that solve real-world problems across healthcare, education, business automation, and digital transformation.
 
-  "ai_expertise": {
-    "title": "Artificial Intelligence Experience",
-    "category": "AI_ML",
-    "keywords": [
-      "Artificial Intelligence",
-      "Machine Learning",
-      "RAG",
-      "LLM",
-      "AI Agents",
-      "Computer Vision",
-      "NLP"
-    ],
-    "content": "Christian has practical experience developing artificial intelligence systems including Retrieval-Augmented Generation applications, AI assistants, machine learning pipelines, computer vision models, and natural language processing systems. His AI experience includes building knowledge retrieval systems, integrating large language models, designing prompt workflows, creating intelligent automation solutions, training deep learning models, evaluating model performance, and deploying AI-powered applications."
-  },
+I combine strong engineering skills with an eye for good UI/UX design, so the things I build are not just technically solid but also pleasant to use. I believe great software is invisible — it just works and helps people do things they couldn't do before.
 
-  "technical_skills": {
-    "title": "Technical Skills",
-    "skills": {
-      "Artificial Intelligence": [
-        "Machine Learning",
-        "Deep Learning",
-        "Large Language Models",
-        "Retrieval-Augmented Generation (RAG)",
-        "AI Agents",
-        "Prompt Engineering",
-        "Natural Language Processing",
-        "Computer Vision",
-        "Model Fine-tuning",
-        "Transformer Models"
-      ],
+You can reach me at christianagyapong2023@email.com or by phone at +233557618362. I am currently available for AI engineering contracts, software development projects, research collaboration, and technical consulting opportunities.
 
-      "Programming Languages": [
-        "Python",
-        "JavaScript",
-        "TypeScript",
-        "Java",
-        "SQL",
-        "HTML",
-        "CSS"
-      ],
 
-      "Frontend Development": [
-        "React",
-        "Next.js",
-        "React Native",
-        "Tailwind CSS",
-        "JavaScript",
-        "Responsive Design"
-      ],
+WHO I AM AND WHAT I DO
 
-      "Backend Development": [
-        "Node.js",
-        "Express.js",
-        "FastAPI",
-        "REST APIs",
-        "Database Design",
-        "Authentication Systems"
-      ],
+I am an AI engineer who genuinely loves what he does. My work sits at the intersection of artificial intelligence and practical software engineering — I design systems from the ground up, wire together machine learning models, build APIs, craft frontends, and get everything deployed to the cloud. I enjoy the full stack, not just one piece of it.
 
-      "Databases": [
-        "PostgreSQL",
-        "MongoDB",
-        "Firebase Firestore",
-        "Supabase"
-      ],
+My core strengths are in Retrieval-Augmented Generation (RAG), large language models, machine learning pipelines, computer vision, and natural language processing. But I also know how to build the full product around those AI components — the backend, the database, the frontend, and the deployment pipeline.
 
-      "Cloud And Deployment": [
-        "Firebase",
-        "Google Cloud",
-        "AWS",
-        "Docker",
-        "Vercel",
-        "GitHub"
-      ],
+I think of myself as someone who bridges the gap between research ideas and working products. I can read a paper, understand the architecture, and turn it into something real.
 
-      "AI Frameworks And Tools": [
-        "PyTorch",
-        "TensorFlow",
-        "Scikit-Learn",
-        "Hugging Face",
-        "LangChain",
-        "LangGraph",
-        "OpenAI API",
-        "Gemini API"
-      ],
 
-      "Design": [
-        "Figma",
-        "UI/UX Design",
-        "Graphic Design",
-        "Prototyping"
-      ]
-    }
-  },
+EDUCATION AND ACADEMIC BACKGROUND
 
-  "professional_experience": [
-    {
-      "position": "AI Engineer",
-      "organization": "ScaleUpBuild",
-      "focus": "Artificial Intelligence and Business Automation",
-      "responsibilities": [
-        "Developed AI-powered solutions for business automation",
-        "Built Retrieval-Augmented Generation systems",
-        "Integrated AI assistants with business workflows",
-        "Designed intelligent customer support solutions using LLM technologies"
-      ]
-    },
+I am a Computer Science student at the University of Ghana, Legon. My major is Artificial Intelligence and Machine Learning. Studying at one of West Africa's premier universities has given me a strong theoretical foundation while my personal projects and internships have kept me grounded in what actually ships and works in production.
 
-    {
-      "position": "Machine Learning Intern",
-      "organization": "DISAL - Digital Health Solutions",
-      "period": "September 2025 - December 2025",
-      "responsibilities": [
-        "Worked on AI-powered healthcare solutions",
-        "Collaborated on MedGemma-based skin disease detection research",
-        "Prepared and analyzed medical datasets",
-        "Supported machine learning model training and evaluation",
-        "Addressed representation challenges in African healthcare datasets"
-      ]
-    },
+My coursework and self-study have covered algorithms, data structures, probability theory, linear algebra, neural networks, deep learning architectures, transformer models, reinforcement learning concepts, and software engineering principles. I try to balance the academic rigor with hands-on building because I believe you only truly understand something when you have actually built it yourself.
 
-    {
-      "position": "UI/UX Designer and QA Tester",
-      "organization": "King Of Glory Covenant Chapel International",
-      "responsibilities": [
-        "Designed user interfaces for church management systems",
-        "Created wireframes and prototypes",
-        "Performed usability testing",
-        "Developed responsive design systems"
-      ]
-    },
+I am passionate about seeing AI applied meaningfully in the African context — addressing healthcare gaps, improving education access, and powering the next generation of African-built technology companies.
 
-    {
-      "position": "Full Stack Developer",
-      "organization": "DigitalWave Technologies",
-      "responsibilities": [
-        "Developed full-stack web applications",
-        "Built frontend interfaces and backend APIs",
-        "Designed database structures",
-        "Implemented responsive and scalable solutions"
-      ]
-    }
-  ],
 
-  "featured_projects": [
-    {
-      "name": "AI WhatsApp Business Assistant",
-      "category": "Generative AI / RAG",
-      "description": "A Retrieval-Augmented Generation system designed to provide intelligent responses using business knowledge bases and documents.",
-      "technologies": [
-        "Python",
-        "LLMs",
-        "LangGraph",
-        "Vector Database",
-        "PostgreSQL",
-        "Firebase"
-      ],
-      "features": [
-        "Semantic search",
-        "Document retrieval",
-        "Knowledge base integration",
-        "Conversation memory",
-        "AI automation"
-      ]
-    },
+MY PROFESSIONAL EXPERIENCE AND WORK HISTORY
 
-    {
-      "name": "African Skin Disease Detection System",
-      "category": "Healthcare AI",
-      "description": "A machine learning research project focused on improving skin disease detection using AI models trained with African-specific healthcare data.",
-      "technologies": [
-        "Deep Learning",
-        "Computer Vision",
-        "MedGemma",
-        "Python"
-      ]
-    },
+AI Engineer at ScaleUpBuild
+At ScaleUpBuild I worked as an AI Engineer focused on artificial intelligence and business automation. My responsibilities included developing AI-powered solutions that helped businesses automate repetitive workflows, building Retrieval-Augmented Generation (RAG) systems that gave businesses intelligent access to their own documents and knowledge bases, integrating AI assistants into existing business workflows, and designing intelligent customer support solutions using large language model (LLM) technologies. This role deepened my understanding of how AI moves from prototype to a real product that a business actually depends on.
 
-    {
-      "name": "TweetEval NLP Classification Model",
-      "category": "Natural Language Processing",
-      "description": "A three-class NLP classification model for identifying safe content, neutral content, and offensive/hate speech categories.",
-      "technologies": [
-        "Python",
-        "Transformers",
-        "NLP",
-        "Machine Learning"
-      ]
-    },
+Machine Learning Intern at DISAL — Digital Health Solutions (September 2025 to December 2025)
+During my internship at DISAL (Digital Health Solutions), I worked on AI-powered healthcare solutions with a focus on making machine learning work for African patients and clinical contexts. A major project was collaborating on research using MedGemma, Google's medical AI model, for skin disease detection. I prepared and analyzed medical image datasets, supported the training and evaluation of machine learning models, and helped address a critical challenge: the underrepresentation of African patients in most existing medical AI datasets. This work is important to me because AI that only works well for certain populations is not equitable AI.
 
-    {
-      "name": "Christian.dev Portfolio Platform",
-      "category": "Web Development",
-      "description": "A modern developer portfolio showcasing Christian's AI engineering, software development, research, and design capabilities.",
-      "technologies": [
-        "React",
-        "JavaScript",
-        "Tailwind CSS"
-      ]
-    }
-  ],
+UI/UX Designer and QA Tester at King Of Glory Covenant Chapel International
+I designed user interfaces for a church management system, created wireframes and interactive prototypes, conducted usability testing sessions to find friction points, and developed a consistent responsive design system that worked across devices. This role taught me the discipline of user-centered design and the importance of testing assumptions with real users.
 
-  "research_interests": {
-    "title": "Research Areas",
-    "content": [
-      "Multimodal Artificial Intelligence",
-      "Educational AI",
-      "Healthcare AI",
-      "Computer Vision",
-      "Large Language Models",
-      "Agentic AI",
-      "Retrieval-Augmented Generation",
-      "Human-AI Interaction",
-      "Responsible AI",
-      "Explainable AI"
-    ]
-  },
+Full Stack Developer at DigitalWave Technologies
+At DigitalWave I built full-stack web applications from scratch, working on both the frontend interfaces and the backend APIs. I designed database schemas, implemented authentication systems, and built scalable, responsive solutions that met client requirements.
 
-  "services": {
-    "title": "Professional Services",
-    "services": [
-      "AI Application Development",
-      "Custom Chatbot Development",
-      "RAG System Development",
-      "Machine Learning Solutions",
-      "Full Stack Web Development",
-      "API Development",
-      "Cloud Deployment",
-      "Software Architecture",
-      "Technical Consulting",
-      "AI Research Collaboration"
-    ]
-  },
 
-  "faq": [
-    {
-      "question": "Who is Christian Agyapong?",
-      "answer": "Christian Agyapong is an AI Engineer, Machine Learning Engineer, Full Stack Developer, and researcher from Ghana focused on building intelligent systems and software solutions."
-    },
+MY TECHNICAL SKILLS AND TECH STACK
 
-    {
-      "question": "Does Christian build AI systems?",
-      "answer": "Yes. Christian develops AI systems including RAG applications, AI assistants, machine learning models, NLP systems, and computer vision solutions."
-    },
+Programming Languages: I primarily work in Python and JavaScript. I also have experience with TypeScript, Java, SQL, HTML, and CSS.
 
-    {
-      "question": "What technologies does Christian use?",
-      "answer": "Christian works with Python, JavaScript, React, Node.js, PostgreSQL, Firebase, Supabase, Docker, PyTorch, TensorFlow, LangGraph, LangChain, and modern AI APIs."
-    },
+Artificial Intelligence and Machine Learning: Machine Learning, Deep Learning, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), AI Agents, Prompt Engineering, Natural Language Processing (NLP), Computer Vision, Model Fine-tuning, Transformer Models.
 
-    {
-      "question": "What type of AI projects has Christian worked on?",
-      "answer": "Christian has worked on AI assistants, healthcare AI systems, NLP classifiers, computer vision projects, and intelligent automation platforms."
-    },
+Frontend Development: React, Next.js, React Native (for mobile apps), Tailwind CSS, Responsive Design, JavaScript.
 
-    {
-      "question": "What are Christian's research interests?",
-      "answer": "Christian's research interests include multimodal AI, educational AI, healthcare AI, large language models, AI agents, retrieval systems, and responsible AI."
-    }
-  ],
+Backend Development: Node.js, Express.js, FastAPI, REST API design and development, Database Design, Authentication Systems.
 
-  "personal_values": [
-    "Innovation",
-    "Continuous Learning",
-    "Problem Solving",
-    "Collaboration",
-    "Technical Excellence",
-    "Building Impactful Technology"
-  ]
-}
+Databases: PostgreSQL, MongoDB, Firebase Firestore, Supabase.
+
+Cloud and Deployment: Firebase, Google Cloud, AWS, Docker, Vercel, GitHub.
+
+AI Frameworks and Libraries: PyTorch, TensorFlow, Scikit-Learn, Hugging Face Transformers, LangChain, LangGraph, OpenAI API, Gemini API.
+
+Design Tools: Figma, UI/UX Design, Graphic Design, Prototyping.
+
+
+MY PROJECTS
+
+Project: AI WhatsApp Business Assistant (Generative AI / RAG)
+This is a Retrieval-Augmented Generation system I built to give businesses an intelligent WhatsApp assistant powered by their own documents and knowledge bases. The system uses semantic search so it retrieves the most relevant information before generating a response, meaning the answers are grounded in real business data rather than hallucinated. It supports conversation memory so the assistant remembers what was discussed earlier in a chat thread. Technologies used: Python, LLMs, LangGraph, Vector Database, PostgreSQL, Firebase.
+
+Project: African Skin Disease Detection System (Healthcare AI)
+This is a machine learning research project focused on improving skin disease detection for African patients. Most existing skin disease AI models are trained on datasets dominated by lighter skin tones, which means they perform poorly on darker skin. My work at DISAL tackled this representation problem using MedGemma-based models and African-specific healthcare data. This project sits at the intersection of computer vision, healthcare equity, and responsible AI. Technologies used: Deep Learning, Computer Vision, MedGemma, Python.
+
+Project: TweetEval NLP Classification Model (Natural Language Processing)
+I built a three-class NLP text classification model that categorizes social media content into safe content, neutral content, and offensive or hate speech. This kind of content moderation model is important for building safer online spaces. Technologies used: Python, Hugging Face Transformers, NLP, Machine Learning.
+
+Project: Christian.dev Portfolio Platform (Web Development)
+My personal developer portfolio website showcasing my AI engineering background, software development experience, research interests, and design skills. Technologies used: React, JavaScript, Tailwind CSS. The portfolio is live at https://christiandetails.vercel.app/
+
+
+MY RESEARCH INTERESTS
+
+My research interests span several areas of modern AI:
+
+Multimodal Artificial Intelligence — building systems that can understand and reason across different modalities like text, images, and audio.
+
+Educational AI — using AI to improve learning outcomes and make quality education more accessible, especially in developing regions.
+
+Healthcare AI — applying machine learning to medical diagnosis, disease detection, and clinical decision support with a focus on African healthcare contexts.
+
+Computer Vision — image recognition, object detection, and medical image analysis.
+
+Large Language Models — the architectures, capabilities, and limitations of modern LLMs including fine-tuning strategies and efficient inference.
+
+Agentic AI — building AI systems that can plan, reason, and take multi-step actions autonomously.
+
+Retrieval-Augmented Generation — improving LLM factuality and grounding by connecting models to external knowledge sources.
+
+Human-AI Interaction — designing AI systems that feel natural and trustworthy to real users.
+
+Responsible AI — fairness, transparency, explainability, and the ethical deployment of AI, especially in high-stakes domains like healthcare.
+
+
+SERVICES I OFFER
+
+I offer the following professional services:
+- AI Application Development: designing and building intelligent applications from scratch
+- Custom Chatbot Development: building conversational AI systems for websites, WhatsApp, Telegram, and other platforms
+- RAG System Development: connecting LLMs to business knowledge bases for accurate, grounded responses
+- Machine Learning Solutions: developing predictive models, classifiers, and ML pipelines
+- Full Stack Web Development: frontend, backend, database, and deployment
+- API Development: building clean and scalable REST APIs
+- Cloud Deployment: deploying applications on Firebase, Google Cloud, AWS, Vercel, or Fly.io
+- Software Architecture: designing scalable, maintainable systems
+- Technical Consulting: advising teams on AI strategy, tool selection, and implementation
+- AI Research Collaboration: partnering on research projects in healthcare AI, NLP, and computer vision
+
+
+MY CERTIFICATIONS
+
+AWS Educate Introduction to Cloud 101 — Credly badge: https://www.credly.com/badges/0b6a0d2c-3658-4a6a-aa58-ec2a1fb4e3cd
+
+Applied AI Lab: Deep Learning for Computer Vision — Credly badge: https://www.credly.com/badges/030a23b0-a459-475a-9f25-5939cefb1bf2/linked_in_profile
+
+Data Intelligence and Swarm Analytics Lab — Credsverse credential: https://credsverse.com/credentials/b8738510-8e42-4530-91b2-dfab4a40c1e3
+
+Udemy Prompt Engineering Certificate — Udemy: https://www.udemy.com/certificate/UC-3c9b7a15-1e0d-4dfc-bf92-7f64d469c1bf/
+
+
+MY PERSONAL VALUES AND WHAT DRIVES ME
+
+I care deeply about innovation — finding better ways to do things rather than just copying what already exists. I believe in continuous learning; the technology landscape changes fast and the best engineers stay curious. Problem solving is at the heart of what I do — I enjoy sitting with a hard challenge and working through it systematically. I value collaboration because the best work happens when people with different skills combine their perspectives. I hold myself to a standard of technical excellence and I care about building technology that has real positive impact on people's lives.
+
+What really motivates me is the idea that technology — and specifically AI — can be a genuine equalizer. It can bring world-class healthcare, education, and economic tools to people who currently don't have access to them. That is what gets me excited about my work every morning.
+
+
+FREQUENTLY ASKED QUESTIONS
+
+Q: Who is Christian Agyapong?
+A: I am Christian Agyapong, also known as Chrix Tech — an AI Engineer, Machine Learning Engineer, Full Stack Developer, and researcher from Ghana focused on building intelligent systems and software solutions.
+
+Q: Does Christian build AI systems?
+A: Yes. I develop AI systems including RAG applications, AI assistants, machine learning models, NLP classifiers, and computer vision solutions. If you have a project idea, feel free to reach out.
+
+Q: What technologies does Christian use?
+A: I work with Python, JavaScript, React, Node.js, PostgreSQL, Firebase, Supabase, Docker, PyTorch, TensorFlow, LangGraph, LangChain, and modern AI APIs like OpenAI and Gemini.
+
+Q: What type of AI projects has Christian worked on?
+A: I have built AI assistants, healthcare AI systems for African patients, NLP classifiers for content moderation, computer vision projects, and intelligent business automation platforms.
+
+Q: What are Christian's research interests?
+A: My research interests include multimodal AI, educational AI, healthcare AI, large language models, agentic AI systems, retrieval-augmented generation, and responsible AI.
+
+Q: Is Christian available for freelance or contract work?
+A: Yes, I am open to freelance projects, contract roles, research collaborations, and consulting engagements in AI engineering and software development.
+
+Q: How can I contact Christian?
+A: You can email me at christianagyapong2023@email.com or call/WhatsApp at +233557618362. You can also connect with me on LinkedIn at https://www.linkedin.com/in/christian-agyapong-4a6b7139b or check my portfolio at https://christiandetails.vercel.app/
+
+Q: Where can I see Christian's work?
+A: My portfolio is at https://christiandetails.vercel.app/ and my GitHub is at https://github.com/ChristianAgyapong
+
+Q: What is Christian's GitHub?
+A: My GitHub profile is https://github.com/ChristianAgyapong — you can see my open source projects and code there.
+
+Q: What is Christian's portfolio website?
+A: My portfolio website is https://christiandetails.vercel.app/ where you can see my projects, skills, and background.
+
+Q: What is Christian's LinkedIn?
+A: My LinkedIn profile is https://www.linkedin.com/in/christian-agyapong-4a6b7139b
+
+Q: What are Christian's hobbies?
+A: Outside of coding, I enjoy exploring new AI research papers and experimenting with new tools. I am passionate about football (soccer) and like to stay active. I also enjoy music and find it helps me focus when I am deep in a coding session. I like having conversations about technology, its impact on society, and how Africa can leverage it to leapfrog traditional development stages.
+
+Q: What are Christian's goals and future vision?
+A: My short-term goal is to keep sharpening my skills in AI engineering and ship more impactful projects. Long-term, I want to build or contribute to AI systems that make a measurable difference in healthcare and education in Africa. I also want to grow as a researcher — publish work, collaborate internationally, and contribute to the global AI conversation from an African perspective. Ultimately I want to be part of the generation that proves that world-class AI can be built in Africa, for Africa and for the world.
