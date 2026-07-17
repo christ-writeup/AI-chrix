@@ -29,11 +29,16 @@ I design systems from the ground up, wire together ML models, build APIs, craft 
 I bridge the gap between research ideas and real working products.
 
 EDUCATION:
+High School (Senior High School): Achimota School (Mar 2021 – Sep 2023), High School Diploma – General Arts.
+
 I am a Computer Science student at the University of Ghana, Legon.
 My major is Artificial Intelligence and Machine Learning.
+Expected university completion: October 2027.
+
 My coursework and self-study cover algorithms, data structures, probability theory, linear algebra,
 neural networks, deep learning architectures, transformer models, and software engineering principles.
 I believe you only truly understand something when you have built it yourself, so I balance theory with building.
+
 
 TECH STACK AND SKILLS:
 Programming languages: Python (primary), JavaScript, TypeScript, Java, SQL, HTML, CSS.

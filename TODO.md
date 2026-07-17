@@ -11,5 +11,7 @@
 - [x] Add deterministic portfolio + GitHub links to the knowledge base (BM25) in `app.py`.
 - [ ] Ensure the assistant returns those exact URLs when asked about portfolio/GitHub.
 - [ ] Quick chat tests (ask: "portfolio" and "GitHub link").
+- [ ] Update KB with SHS school name + expected completion/graduation date (and university expected completion date if you want it in KB). (Missing currently)
+
 
 
